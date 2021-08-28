@@ -172,12 +172,25 @@ input::-webkit-inner-spin-button {
     }
 }
 
-.wc-thank-you-img {
-    z-index: 64;
+.woocommerce-checkout.woocommerce-page .wc-thank-you-img {
     width: 118px;
     height: 175px;
-    background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPngc776d0d73d89dfec75dc9a315fc4c081d0a0b43b70fdb491decd06448d3f662e)
-    100% no-repeat;
-    align-self: center;
+    background: url('/wp-content/uploads/2021/08/img_shop／Successful_purchase.png') 100% no-repeat;
     margin-top: 195px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+.woocommerce-checkout.woocommerce-page .wc-thank-you-successful{
+    color: white;
+    background-color: rgba(33, 150, 243, 1);
+}
+.woocommerce-checkout.woocommerce-page .wc-thank-you-look-up-order{
+
+}
+.woocommerce-checkout.woocommerce-page .wc-thank-you-info{
+    text-align: center;
+}
+.woocommerce-checkout.woocommerce-page .entry-header {
+    display: none;
 }
