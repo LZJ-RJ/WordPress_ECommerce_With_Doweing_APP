@@ -47,13 +47,13 @@ class StorefrontChildTheme {
 
     public function add_before_quantity_btn() {
         if (is_single()) {
-            echo '<div class="wrap2"><span class="word-plus">＋</span></div>';
+            echo '<span class="word-pd-quantity">數量：</span><div class="wrap2 plus"><span class="word-plus">＋</span></div>';
         }
     }
 
     public function add_after_quantity_btn() {
         if (is_single()) {
-            echo '<div class="wrap2"><span class="word-sub">-</span></div>';
+            echo '<div class="wrap2 sub"><span class="word-sub">-</span></div>';
         }
     }
 
@@ -61,7 +61,7 @@ class StorefrontChildTheme {
         global $product;
         $html = '<span class="single-pd-spec-text">商品選項</span><hr>';
         foreach($attributes as $attribute_name => $options) {
-            $html .=  '<div class="single-pd-spec-option "><span class="word-pd-attr-name">' . wc_attribute_label($attribute_name) . '：</span>';
+            $html .=  '<div class="single-pd-spec-option"><div class="single-pd-spec-option-title"><span class="word-pd-attr-name">' . wc_attribute_label($attribute_name) . '：</span></div>';
             $terms = wc_get_product_terms(
                 $product->get_id(),
                 $attribute_name,
@@ -70,12 +70,17 @@ class StorefrontChildTheme {
                 )
             );
 
+            $html .= '<div class="single-pd-spec-option-content">';
             foreach ( $terms as $term ) {
                 if ( in_array( $term->slug, $options, true ) ) {
                     $html .= '<div class="box variation-box-normal"><span class="info variation-text-normal" attribute-term-taxonomy="' . $term->taxonomy . '" attribute-term-value="' . $term->slug . '">' . esc_html( apply_filters( 'woocommerce_variation_option_name', $term->name, $term, $attribute_name, $product ) ) . '</span></div>';
                 }
             }
-            $html .= '</div><br>';
+            $html .= '</div></div><br>';
+
+            if ($attribute_name == 'pa_color') {
+                $html .= '<br><br>';
+            }
         }
         echo $html;
     }
@@ -131,8 +136,8 @@ class StorefrontChildTheme {
 
     public function single_pd_tab_pd_spec() {
         global $post;
-        echo '<h2>'.__( 'Product Spec', 'woocommerce' ).'</h2>'.
-            '<p>'.get_post_meta($post->ID, 'product_spec', 1).'</p>';
+        echo '<h2>'.__( 'Product Spec', 'woocommerce' ).'</h2><hr>'.
+            '<div class="tab-pd-wrapper spec"><div class="tab-pd-content">' . get_post_meta($post->ID, 'product_spec', 1) . '</div></div>';
     }
 }
 

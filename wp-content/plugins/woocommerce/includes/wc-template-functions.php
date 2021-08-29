@@ -1560,7 +1560,7 @@ if ( ! function_exists( 'woocommerce_template_single_rating' ) ) {
 	 */
 	function woocommerce_template_single_rating() {
 		if ( post_type_supports( 'product', 'comments' ) ) {
-			wc_get_template( 'single-product/rating.php' );
+//			wc_get_template( 'single-product/rating.php' );
 		}
 	}
 }

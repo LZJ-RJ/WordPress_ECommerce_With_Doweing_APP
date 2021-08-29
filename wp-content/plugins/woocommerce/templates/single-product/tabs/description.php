@@ -24,7 +24,8 @@ $heading = apply_filters( 'woocommerce_product_description_heading', __( 'Descri
 ?>
 
 <?php if ( $heading ) : ?>
-	<h2><?php echo esc_html( $heading ); ?></h2>
+	<h2><?php echo esc_html( $heading ); ?></h2><hr>
 <?php endif; ?>
-
+<div class="tab-pd-wrapper desc"><div class="tab-pd-content">
 <?php the_content(); ?>
+</div></div>
