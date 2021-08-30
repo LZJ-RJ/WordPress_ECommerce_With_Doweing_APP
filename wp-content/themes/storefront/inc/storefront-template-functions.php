@@ -307,6 +307,9 @@ if ( ! function_exists( 'storefront_page_header' ) ) {
 			<?php
 			storefront_post_thumbnail( 'full' );
 			the_title( '<h1 class="entry-title">', '</h1>' );
+			if (is_cart()) {
+			    echo '<hr>';
+            }
 			?>
 		</header><!-- .entry-header -->
 		<?php

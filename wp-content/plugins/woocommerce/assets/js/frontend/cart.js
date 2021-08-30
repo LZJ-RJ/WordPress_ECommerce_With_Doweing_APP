@@ -324,7 +324,7 @@ jQuery( function( $ ) {
 				this.item_restore_clicked );
 			$( document ).on(
 				'change input',
-				'.woocommerce-cart-form .cart_item :input',
+				'.woocommerce-cart.woocommerce-page .woocommerce-cart-form .quantity input[type="number"]',
 				this.input_changed );
 
 			$( '.woocommerce-cart-form :input[name="update_cart"]' ).prop( 'disabled', true ).attr( 'aria-disabled', true );

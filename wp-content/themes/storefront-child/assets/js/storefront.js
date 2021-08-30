@@ -66,24 +66,30 @@ jQuery(function($){
         }
     });
 
-    $('.single-product .quantity .word-plus').on('click', function (){
-        let new_value = parseInt($(this).parents('.quantity').find('input[name="quantity"]').val()) + 1;
-        let max_value = parseInt($(this).parents('.quantity').find('input[name="quantity"]').attr('max'));
-        if (max_value >= new_value) {
-            $(this).parents('.quantity').find('input[name="quantity"]').val(new_value);
-        } else {
-            $(this).parents('.quantity').find('input[name="quantity"]').val(max_value);
+    $(document).on('click' , '.single-product .quantity .word-plus, .woocommerce-cart.woocommerce-page .quantity .word-plus', function() {
+        let new_value = parseInt($(this).parents('.quantity').find('input[type="number"]').val()) + 1;
+        let max_value = parseInt($(this).parents('.quantity').find('input[type="number"]').attr('max'));
+
+        if (isNaN(max_value)) {
+            max_value = 9999999;
         }
+        if (max_value >= new_value) {
+            $(this).parents('.quantity').find('input[type="number"]').val(new_value);
+        } else {
+            $(this).parents('.quantity').find('input[type="number"]').val(max_value);
+        }
+        $(this).parents('.quantity').find('input[type="number"]').change();
     });
 
-    $('.single-product .quantity .word-sub').on('click', function (){
-        let new_value = parseInt($(this).parents('.quantity').find('input[name="quantity"]').val()) - 1;
-        let min_value = parseInt($(this).parents('.quantity').find('input[name="quantity"]').attr('min'));
+    $(document).on('click' , '.single-product .quantity .word-sub, .woocommerce-cart.woocommerce-page .quantity .word-sub' , function() {
+        let new_value = parseInt($(this).parents('.quantity').find('input[type="number"]').val()) - 1;
+        let min_value = parseInt($(this).parents('.quantity').find('input[type="number"]').attr('min'));
         if (min_value <= new_value) {
-            $(this).parents('.quantity').find('input[name="quantity"]').val(new_value);
+            $(this).parents('.quantity').find('input[type="number"]').val(new_value);
         } else {
-            $(this).parents('.quantity').find('input[name="quantity"]').val(min_value);
+            $(this).parents('.quantity').find('input[type="number"]').val(min_value);
         }
+        $(this).parents('.quantity').find('input[type="number"]').change();
     });
 
     window.onload = function () {

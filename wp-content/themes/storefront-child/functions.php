@@ -48,11 +48,13 @@ class StorefrontChildTheme {
     public function add_before_quantity_btn() {
         if (is_single()) {
             echo '<span class="word-pd-quantity">數量：</span><div class="wrap2 plus"><span class="word-plus">＋</span></div>';
+        } else if (is_cart()) {
+            echo '<div class="wrap2 plus"><span class="word-plus">＋</span></div>';
         }
     }
 
     public function add_after_quantity_btn() {
-        if (is_single()) {
+        if (is_single() || is_cart()) {
             echo '<div class="wrap2 sub"><span class="word-sub">-</span></div>';
         }
     }
