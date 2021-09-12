@@ -36,15 +36,15 @@ jQuery(function($){
 
     $('.single-product .box').on('mouseup', function () {
         if(!$(this).hasClass('selected')) {
-            $(this).parent('.single-pd-spec-option').find('.box')
+            $(this).parents('.single-pd-spec-option').find('.box')
                 .removeClass('selected');
 
             // normal
-            $(this).parent('.single-pd-spec-option').find('.box')
+            $(this).parents('.single-pd-spec-option').find('.box')
                 .removeClass('variation-box-hover variation-box-clicked')
                 .addClass('variation-box-normal');
 
-            $(this).parent('.single-pd-spec-option').find('.box .info')
+            $(this).parents('.single-pd-spec-option').find('.box .info')
                 .removeClass('variation-text-hover variation-text-selected')
                 .addClass('variation-text-normal');
 
@@ -92,22 +92,6 @@ jQuery(function($){
         $(this).parents('.quantity').find('input[type="number"]').change();
     });
 
-    window.onload = function () {
-        $('.single-product .tabs.wc-tabs').remove();
-        $('.single-product .woocommerce-Tabs-panel.panel.entry-content.wc-tab').css('display', 'block');
-        $('.single-product .woocommerce-Tabs-panel.panel.entry-content.wc-tab').css('width', '100%');
-
-        if ($('.single-product .woocommerce-Tabs-panel.woocommerce-Tabs-panel--reviews.panel.entry-content.wc-tab').length &&
-            $('.single-product section.up-sells.upsells.products').length
-        ) {
-            let tmpReviewHtml = '<br><br><br><div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--reviews panel entry-content wc-tab" id="tab-reviews" role="tabpanel" aria-labelledby="tab-title-reviews" style="display: block; width: 100%;">'
-            + $('.single-product .woocommerce-Tabs-panel.woocommerce-Tabs-panel--reviews.panel.entry-content.wc-tab').html()
-            + '</div><br><br>';
-            $('.single-product .woocommerce-Tabs-panel.woocommerce-Tabs-panel--reviews.panel.entry-content.wc-tab').remove();
-            $(tmpReviewHtml).insertBefore($('.single-product section.related.products'));
-        }
-    }
-
     $.each($('.single-product .tab-pd-content'), function (key ,value){
        if ($(value).height() > 120) {
            $(value).css('height', '120px');
@@ -132,5 +116,24 @@ jQuery(function($){
         }
     });
 
+    window.onload = function () {
+        if ($('.single-product').length && window.location.search == '') {
+            $('.reset_variations').click();
+            $('.quantity input[name="quantity"]').val(1);
+        }
 
+        $('.single-product .tabs.wc-tabs').remove();
+        $('.single-product .woocommerce-Tabs-panel.panel.entry-content.wc-tab').css('display', 'block');
+        $('.single-product .woocommerce-Tabs-panel.panel.entry-content.wc-tab').css('width', '100%');
+
+        if ($('.single-product .woocommerce-Tabs-panel.woocommerce-Tabs-panel--reviews.panel.entry-content.wc-tab').length &&
+            $('.single-product section.up-sells.upsells.products').length
+        ) {
+            let tmpReviewHtml = '<br><br><br><div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--reviews panel entry-content wc-tab" id="tab-reviews" role="tabpanel" aria-labelledby="tab-title-reviews" style="display: block; width: 100%;">'
+                + $('.single-product .woocommerce-Tabs-panel.woocommerce-Tabs-panel--reviews.panel.entry-content.wc-tab').html()
+                + '</div><br><br>';
+            $('.single-product .woocommerce-Tabs-panel.woocommerce-Tabs-panel--reviews.panel.entry-content.wc-tab').remove();
+            $(tmpReviewHtml).insertBefore($('.single-product section.related.products'));
+        }
+    }
 })

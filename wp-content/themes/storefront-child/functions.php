@@ -12,10 +12,10 @@ class StorefrontChildTheme {
     private static $instance;
 
     public function __construct() {
+        load_child_theme_textdomain('storefrontchild', plugin_dir_path(__FILE__) . 'languages');
         $this->include_backend_files();
         $this->include_frontend_files();
         $this->register_hooks();
-        load_child_theme_textdomain('storefrontchild', plugin_dir_path(__FILE__) . 'languages');
     }
 
     public static function get_instance() {
@@ -43,6 +43,7 @@ class StorefrontChildTheme {
         add_action( 'woocommerce_after_quantity_input_field',  [$this, 'add_after_quantity_btn']);
         add_action( 'woocommerce_after_single_product_summary',  [$this, 'add_vendor_information'], 8);
         add_filter( 'woocommerce_product_tabs', [$this, 'modify_pd_tab'], 90);
+        add_filter( 'storefront_handheld_footer_bar_links', [$this, 'modify_footer_bar'], 10 ,1);
     }
 
     public function add_before_quantity_btn() {
@@ -128,7 +129,7 @@ class StorefrontChildTheme {
     public function modify_pd_tab( $tabs ) {
         unset( $tabs['additional_information'] );
         $tabs['pd_spec'] = array(
-            'title' 	=> __( 'Product Spec', 'storefrontchild' ),
+            'title' 	=> __( '商品規格', 'storefrontchild' ),
             'priority' 	=> 15,
             'callback' 	=> [$this, 'single_pd_tab_pd_spec']
         );
@@ -138,8 +139,15 @@ class StorefrontChildTheme {
 
     public function single_pd_tab_pd_spec() {
         global $post;
-        echo '<h2>'.__( 'Product Spec', 'woocommerce' ).'</h2><hr>'.
+        echo '<h2>'.__( '商品規格', 'storefrontchild' ).'</h2><hr>'.
             '<div class="tab-pd-wrapper spec"><div class="tab-pd-content">' . get_post_meta($post->ID, 'product_spec', 1) . '</div></div>';
+    }
+
+    public function modify_footer_bar($links) {
+        $my_account = $links['my-account'];
+        unset($links['my-account']);
+        $links['my-account'] = $my_account;
+        return $links;
     }
 }
 
