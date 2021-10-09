@@ -116,6 +116,16 @@ jQuery(function($){
         }
     });
 
+
+    $('.beta.site-title [rel="home"]').html("");
+    $(document).on('click', '#masthead div.site-title', function () {
+        location.href = $(this).find("a").attr("href");
+    })
+
+    if ($('body.logged-in').length) {
+        $('#menu-item-52 > a').text("");
+    }
+
     window.onload = function () {
         if ($('.single-product').length && window.location.search == '') {
             $('.reset_variations').click();

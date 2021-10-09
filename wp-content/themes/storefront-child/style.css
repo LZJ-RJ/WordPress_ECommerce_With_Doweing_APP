@@ -339,6 +339,65 @@ input::-webkit-inner-spin-button {
     display: inline-block;
 }
 
+/*Top Bar */
+#masthead {
+    margin-left: 19%;
+}
+#masthead div.col-full > div.site-branding {
+    width: fit-content!important;
+    margin-bottom: 0;
+}
+#masthead div.col-full > div.site-search {
+    float: left;
+}
+#masthead div #site-navigation {
+    width: 33%;
+}
+#masthead div.storefront-primary-navigation,
+#masthead div.col-full {
+    display: inline-block!important;
+}
+#masthead > div.col-full {
+    padding-right: 0;
+    width: 50%;
+}
+#masthead #site-header-cart {
+    float: left;
+    width: fit-content;
+}
+body .site-header {
+    margin-top: 2% !important;
+}
+
+#masthead div.site-title {
+    cursor: pointer;
+    max-width: 206px;
+    background-image: url(/wp-content/uploads/2021/09/doweing-logo@2x.png);
+    width: 205px;
+    height: 70px;
+    background-repeat: no-repeat;
+    margin-bottom: 0;
+}
+
+#site-navigation > button {
+    display: none;
+}
+
+body.logged-in #menu-item-52 > a::after {
+    content: '\f007';
+    font-family: "Font Awesome 5 Free";
+}
+
+div.block.footer-widget-1 > div,
+div.block.footer-widget-1 > div ul#menu-footer-1 li{
+    display: inline-block;
+}
+div.block.footer-widget-1 > div.widget.widget_text{
+    float: right;
+}
+div.block.footer-widget-1 > div.widget_nav_menu ul li::before {
+    display: none;
+}
 @media screen and (min-width: 1024px){
     .single-product .tab-pd-content {
         padding-left: 2%;
@@ -372,6 +431,11 @@ input::-webkit-inner-spin-button {
         margin-top: 312px;
         margin-bottom: 0!important;
         padding: 0!important;
+    }
+
+    #masthead div.col-full > div.site-search {
+        width: 54% !important;
+        margin-left: 20px;
     }
 }
 
@@ -464,7 +528,46 @@ input::-webkit-inner-spin-button {
     }
     .site-header-cart .cart-contents::after {
         content: '\f07a';
+        float: left;
     }
+
+    /*Top Bar*/
+    #masthead {
+        margin-left: 10%;
+        width: 100%;
+    }
+
+    #masthead > div.col-full {
+        width: 49%!important;
+        margin-right: 0;
+        margin-left: 0;
+        padding-right: 0;
+    }
+
+    #masthead div.col-full > div.site-branding {
+        margin-right: 5px;
+    }
+
+    #masthead div.col-full > div.site-search {
+        width: 168px;
+    }
+
+    #masthead div.storefront-primary-navigation {
+        width: 0%;
+    }
+
+    #masthead > div.storefront-primary-navigation > div.col-full {
+        width: 370px;
+        margin-left: 5%;
+    }
+    #masthead #site-navigation {
+        width: 200px!important;
+        margin-right: 0;
+    }
+    #masthead #site-header-cart {
+        width: 145px;
+    }
+
 }
 @media screen and (max-width: 1023px){
     .single-product .woocommerce-product-gallery__image.single-product-main-image.slick-slide.slick-current.slick-active,
@@ -494,6 +597,20 @@ input::-webkit-inner-spin-button {
         margin-top: 72px;
         margin-bottom: 0!important;
         padding: 0!important;
+    }
+
+    #site-header-cart .woocommerce-Price-amount.amount, #site-header-cart .count {
+        visibility: hidden;
+    }
+
+
+    #masthead div.site-title {
+        max-width: 130px;
+        background-image: url(/wp-content/uploads/2021/09/doweing-logo.png);
+        width: 130px;
+        height: 30px;
+        background-repeat: no-repeat;
+        margin-bottom: 0;
     }
 }
 
@@ -541,9 +658,20 @@ input::-webkit-inner-spin-button {
     #tab-reviews,
     .single-product section.up-sells.upsells.products,
     .single-product section.related.products {
-        /*border-top: 1rem solid #EEEEEE;*/
         width: 100%;
     }
+
+    #masthead #site-navigation {
+        width: 100% !important;
+    }
+
+    #masthead div.site-title  {
+        background-image: url(/wp-content/uploads/2021/09/icon-doweing-logo3@2x.png);
+        width: 100px;
+        height: 100px;
+        margin-left: 150%;
+    }
+
 }
 
 @media screen and (min-width: 480px) and (max-width: 767px) {
@@ -811,5 +939,19 @@ input::-webkit-inner-spin-button {
     }
     .single-product .product-type-simple .wpgs-for.slick-initialized.slick-slider .slick-list {
         height: 310px;
+    }
+
+    #masthead div.site-title  {
+        background-image: url(/wp-content/uploads/2021/09/icon-doweing-logo3@2x.png);
+        width: 100px;
+        height: 100px;
+        margin-left: 80%;
+    }
+}
+
+@media screen and (min-width: 1480px) {
+    #masthead div.col-full > div.site-search {
+        width: 68% !important;
+        margin-left: 20px;
     }
 }
