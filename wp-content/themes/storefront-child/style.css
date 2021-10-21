@@ -339,6 +339,10 @@ input::-webkit-inner-spin-button {
     display: inline-block;
 }
 
+.woocommerce-page.single-product div.single_variation_wrap > div.woocommerce-variation.single_variation > div.woocommerce-variation-price > span > ins {
+    display: flex;
+}
+
 /*Top Bar */
 #masthead {
     margin-left: 19%;

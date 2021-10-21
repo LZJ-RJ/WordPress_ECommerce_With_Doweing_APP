@@ -112,7 +112,7 @@ class StorefrontChildTheme
             <select id="doweing_hot_channel" name="doweing_hot_channel[]" multiple="multiple" style="width:75%;">
                 <?php
                 global $wpdb;
-                $result = $wpdb->get_results("SELECT `term_id`, `name` FROM `wp_terms` WHERE `slug` LIKE '%vendor-%' ORDER BY `slug` ASC");
+                $result = $wpdb->get_results("SELECT `term_id`, `name` FROM `wp_terms` WHERE `slug` LIKE 'vendor-%' ORDER BY `slug` ASC");
                 foreach ($result as $value) {
                     ?>
                     <option value="<?= $value->term_id ?>" <?= (in_array($value->term_id, $explode_data)) ? "selected" : "" ?>><?= $value->name ?></option>
@@ -163,7 +163,7 @@ class StorefrontChildTheme
             <br>
             <select id="doweing_category" name="doweing_category[]" multiple="multiple" style="width:75%;">
                 <?php
-                $result = $wpdb->get_results("SELECT `term_id`, `name` FROM `wp_terms` WHERE `slug` LIKE '%custom-%' ORDER BY `slug` ASC");
+                $result = $wpdb->get_results("SELECT `term_id`, `name` FROM `wp_terms` WHERE `slug` LIKE '%vendor-%-category-%' ORDER BY `slug` ASC");
                 foreach ($result as $value) {
                     ?>
                     <option value="<?= $value->term_id ?>" <?= (in_array($value->term_id, $explode_data)) ? "selected" : "" ?>><?= $value->name ?></option>
@@ -195,6 +195,20 @@ class StorefrontChildTheme
         if (is_front_page()) {
             wp_enqueue_style('home-css', get_stylesheet_directory_uri() . '/assets/css/home.css');
             wp_enqueue_script('home-js', get_stylesheet_directory_uri() . '/assets/js/home.js');
+        }
+
+        $category = get_queried_object();
+        while ($category->parent != 0) {
+            $category = get_term($category->parent);
+        }
+        if ( explode('-', $category->slug)[0]=='vendor') {
+            $is_vendor = true;
+        } else {
+            $is_vendor = false;
+        }
+        if ($is_vendor) {
+            wp_enqueue_style('vendor-css', get_stylesheet_directory_uri() . '/assets/css/vendor.css');
+            wp_enqueue_script('vendor-js', get_stylesheet_directory_uri() . '/assets/js/vendor.js');
         }
     }
 

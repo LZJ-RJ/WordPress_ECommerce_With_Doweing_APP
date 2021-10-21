@@ -28,10 +28,48 @@ get_header( 'shop' );
  */
 do_action( 'woocommerce_before_main_content' );
 
+$current_category = get_queried_object();
+$parent = $current_category;
+
+if ($current_category->parent == 0) {
+    $is_parent = true;
+} else {
+    $is_parent = false;
+    while ($parent->parent != 0) {
+        $parent = get_term($parent->parent);
+    }
+}
+if ( explode('-', $parent->slug)[0] == 'vendor') {
+    $is_vendor = true;
+} else {
+    $is_vendor = false;
+}
+
+$thumbnail_id = get_term_meta($parent->term_id, 'thumbnail_id', true);
+$imageUrl = wp_get_attachment_url($thumbnail_id);
+
+$bg_img_id = get_term_meta($parent->term_id, 'vendor_category_bg_img', 1);
+$app_link = get_term_meta($parent->term_id, 'vendor_category_app_link', 1);
+$bgImgUrl = wp_get_attachment_url($bg_img_id);
 ?>
-    <header class="woocommerce-products-header">
+    <header class="woocommerce-products-header" style="background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6)), no-repeat url(<?=$bgImgUrl?>);background-size: 100%;">
         <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-            <h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
+        <div class="vendor-category-img">
+            <img
+                    class="vendor-pd-cat-thumbnail"
+                    referrerpolicy="no-referrer"
+                    src="<?=$imageUrl?>"
+            />
+        </div>
+        <div class="vendor-category-description">
+            <span class="woocommerce-products-header__title page-title"><?php
+                if ($is_vendor && !$is_parent) {
+                    echo $parent->name;
+                } else {
+                    woocommerce_page_title();
+                }
+                ?></span>
+
         <?php endif; ?>
 
         <?php
@@ -41,45 +79,80 @@ do_action( 'woocommerce_before_main_content' );
          * @hooked woocommerce_taxonomy_archive_description - 10
          * @hooked woocommerce_product_archive_description - 10
          */
-        do_action( 'woocommerce_archive_description' );
+
+        if ( $parent && ! empty( $parent->description ) ) {
+            echo '<div class="term-description">' . wc_format_content( wp_kses_post( $parent->description ) ) . '</div>';
+        }
         ?>
+        </div>
+        <div class="vendor-category-app-link">
+            <a href="<?=$app_link?>">前往頻道</a>
+        </div>
     </header>
 <?php
-if ( woocommerce_product_loop() ) {
-
-    /**
-     * Hook: woocommerce_before_shop_loop.
-     *
-     * @hooked woocommerce_output_all_notices - 10
-     * @hooked woocommerce_result_count - 20
-     * @hooked woocommerce_catalog_ordering - 30
-     */
-    do_action( 'woocommerce_before_shop_loop' );
-
-    woocommerce_product_loop_start();
-
-    if ( wc_get_loop_prop( 'total' ) ) {
-        while ( have_posts() ) {
-            the_post();
-
-            /**
-             * Hook: woocommerce_shop_loop.
-             */
-            do_action( 'woocommerce_shop_loop' );
-
-            wc_get_template_part( 'content', 'product' );
+if ($is_vendor){
+    $vendor_child = get_terms(
+            array(
+                    'taxonomy' => 'product_cat',
+                    'parent' => $parent->term_id,
+                    'hide_empty' => false,
+                ));
+    echo '<div class="child-term-tab">';
+    foreach ($vendor_child as $child_item) {
+        $child_slug = $child_item->slug;
+        $child_term = get_term_by('slug', $child_slug, 'product_cat');
+        $href = get_term_link($child_term->term_id, 'product_cat');
+        echo '<a class="child-term-href ';
+        if ($child_term->term_id == $current_category->term_id ||
+            strpos($current_category->slug, $child_term->slug) !== false ||
+            ($current_category->parent == get_term_by('slug', $child_slug, 'product_cat')->term_id) ) {
+            echo 'child-term-href-selected"';
+        } else {
+            echo '"';
         }
+        echo 'href="' . $href . '">'.$child_term->name.'</a>';
     }
 
-    woocommerce_product_loop_end();
+    if ($current_category->slug != $parent->slug . '-store' && strpos($current_category->slug, $parent->slug . '-category') === false):
+    ?>
+        <select id="orderby" name="orderby" class="orderby" aria-label="Shop order" onchange="window.location = location.origin + this.value()">
+            <option value="menu_order" <?=(!isset($_GET['orderby']) || $_GET['orderby'] == 'menu_order')?'selected="selected"':''?>>Default sorting</option>
+            <option value="popularity" <?=$_GET['orderby'] == 'popularity'?'selected="selected"':''?>>Sort by popularity</option>
+            <option value="rating" <?=$_GET['orderby'] == 'rating'?'selected="selected"':''?>>Sort by average rating</option>
+            <option value="date" <?=$_GET['orderby'] == 'date'?'selected="selected"':''?>>Sort by latest</option>
+            <option value="price" <?=$_GET['orderby'] == 'price'?'selected="selected"':''?>>Sort by price: low to high</option>
+            <option value="price-desc" <?=$_GET['orderby'] == 'price-desc'?'selected="selected"':''?>>Sort by price: high to low</option>
+        </select>
+    <?php
+    endif;
+    echo '</div>';
 
-    /**
-     * Hook: woocommerce_after_shop_loop.
-     *
-     * @hooked woocommerce_pagination - 10
-     */
-    do_action( 'woocommerce_after_shop_loop' );
+    switch (1) {
+        case $current_category->slug == $parent->slug . '-store':
+            include_once ABSPATH . 'wp-content/themes/storefront-child/vendor-store.php';
+            break;
+        case $current_category->slug == $parent->slug . '-product':
+        case $current_category->slug == $parent->slug . '-new':
+        case $current_category->slug == $parent->slug . '-time-limit':
+            echo '<link rel="stylesheet" href="/wp-content/themes/storefront-child/assets/css/vendor-product.css" media="all">';
+            include_once ABSPATH . 'wp-content/themes/storefront-child/vendor-product.php';
+            break;
+        case strpos($current_category->slug, $parent->slug . '-category') !== false :
+            echo '<link rel="stylesheet" href="/wp-content/themes/storefront-child/assets/css/vendor-category.css" media="all">';
+            include_once ABSPATH . 'wp-content/themes/storefront-child/vendor-category.php';
+            break;
+        default:
+            include_once ABSPATH . 'wp-content/themes/storefront-child/vendor-product.php';
+    }
+
+    $show_different_pd_list_slug = array(
+            $parent->slug . '-store');
 } else {
+    $show_different_pd_list_slug = array();
+}
+
+
+if ( ! woocommerce_product_loop() ) {
     /**
      * Hook: woocommerce_no_products_found.
      *

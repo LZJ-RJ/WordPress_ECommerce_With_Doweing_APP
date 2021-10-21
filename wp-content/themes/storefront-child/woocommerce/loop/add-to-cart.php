@@ -21,16 +21,52 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $product;
 
-echo apply_filters(
-    'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
-    sprintf(
-        '<a href="%s" data-quantity="%s" class="%s" %s>%s</a>',
-        esc_url( $product->add_to_cart_url() ),
-        esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
-        esc_attr( isset( $args['class'] ) ? $args['class'] : 'button' ),
-        isset( $args['attributes'] ) ? wc_implode_html_attributes( $args['attributes'] ) : '',
-        esc_html( $product->add_to_cart_text() )
+$current_category = get_queried_object();
+$parent = $current_category;
+
+if ($current_category->parent == 0) {
+    $is_parent = true;
+} else {
+    $is_parent = false;
+    while ($parent->parent != 0) {
+        $parent = get_term($parent->parent);
+    }
+}
+
+if ( explode('-', $parent->slug)[0] == 'vendor') {
+    $is_vendor = true;
+} else {
+    $is_vendor = false;
+}
+
+if ($is_vendor) {
+    echo apply_filters(
+        'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
+        sprintf(
+            '<a href="%s" data-quantity="%s" class="%s" %s></a>',
+            esc_url( $product->add_to_cart_url() ),
+            esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
+            esc_attr( isset( $args['class'] ) ? $args['class'] : 'button' ),
+            isset( $args['attributes'] ) ? wc_implode_html_attributes( $args['attributes'] ) : '',
     ),
-    $product,
-    $args
-);
+        $product,
+        $args
+    );
+} else {
+    echo apply_filters(
+        'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
+        sprintf(
+            '<a href="%s" data-quantity="%s" class="%s" %s>%s</a>',
+            esc_url( $product->add_to_cart_url() ),
+            esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
+            esc_attr( isset( $args['class'] ) ? $args['class'] : 'button' ),
+            isset( $args['attributes'] ) ? wc_implode_html_attributes( $args['attributes'] ) : '',
+            esc_html( $product->add_to_cart_text() )
+        ),
+        $product,
+        $args
+    );
+}
+
+
+

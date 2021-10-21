@@ -1,0 +1,85 @@
+body.archive a.button.add_to_cart_button {
+    margin-top: -30% !important;
+}
+
+body.archive li.sale a.button.add_to_cart_button {
+    margin-top: -46% !important;
+}
+
+@media screen and (max-width: 768px) {
+    body.archive a.button.add_to_cart_button {
+        width: 35% !important;
+        text-align: center;
+        line-height: 2;
+    }
+
+    body.archive li.sale span.price {
+        width: 65%;
+    }
+
+    body.archive a.button.add_to_cart_button {
+        margin-top: -46% !important;
+    }
+
+    body.archive li.sale a.button.add_to_cart_button {
+        margin-top: -61% !important;
+    }
+
+    body.archive span.price {
+        font-size: 12px;
+    }
+    body.archive li.sale span.price {
+        width: 65%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body.archive span.price {
+        font-size: 12px;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    body.archive span.price {
+        font-size: 30px;
+        text-align: center;
+        margin: 0;
+        margin-left: 10%;
+        width: 60%;
+    }
+
+    body.archive a.button.add_to_cart_button {
+        margin-top: -17% !important;
+        margin-right: 25% !important;
+        width: 14%!important;
+        height: 58px!important;
+        line-height: 0.5;
+    }
+
+    body.archive li.sale a.button.add_to_cart_button {
+        margin-top: -20% !important;
+    }
+
+    body.archive span.price ins {
+        display: block;
+    }
+
+    body.archive h2.woocommerce-loop-product__title {
+        font-size: 44px !important;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    body.archive a.button.add_to_cart_button {
+        margin-top: -25% !important;
+        margin-right: 15% !important;
+        width: 17% !important;
+        height: 50px !important;
+        line-height: 1.5;
+    }
+
+    body.archive li.sale a.button.add_to_cart_button {
+        margin-top: -26% !important;
+    }
+}

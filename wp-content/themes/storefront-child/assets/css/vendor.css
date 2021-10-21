@@ -1,0 +1,279 @@
+body.archive #masthead > .col-full {
+    padding-left: 5%;
+    width: 45%!important;
+}
+body.archive #masthead div.col-full > div.site-search {
+    width: 60% !important;
+}
+body.archive .storefront-primary-navigation > .col-full {
+    padding-left: 0;
+}
+
+body.archive .vendor-category-img {
+    display: inline-block;
+    float: left;
+    margin-right: 2%;
+}
+
+body.archive .vendor-pd-cat-thumbnail {
+    width: 100%;
+}
+
+body.archive .vendor-category-description {
+    display: inline-block;
+    float: left;
+}
+
+body.archive .vendor-category-description .term-description {
+    text-align: left;
+}
+
+body.archive .woocommerce-products-header {
+    padding-top: 4%;
+    padding-left: 6%;
+}
+
+body.archive .vendor-category-description .woocommerce-products-header__title {
+    color: white;
+    font-weight: bold;
+}
+
+body.archive .vendor-category-description .term-description{
+    color: #BDBDBD;
+    font-weight: bold;
+}
+
+body.archive .vendor-category-app-link {
+    display: inline-block;
+    float: right;
+    background-color: white;
+    color: #2196F3;
+    margin-right: 10%;
+    margin-top: 1%;
+    padding: 0.2%;
+    font-weight: bold;
+    border-radius: 5px;
+    width: 8%;
+    text-align: center;
+}
+
+body.archive div.child-term-tab {
+    background-color: white;
+    margin: 1% 0 1% 0;
+    margin-bottom: 3%;
+}
+body.archive .child-term-href {
+    color: #BDBDBD;
+    margin: 2%;
+    font-weight: bold;
+}
+body.archive .child-term-href-selected {
+    padding: 0.5%;
+    color: #424242;
+    border-bottom: #757575 solid 2px;
+}
+
+body.archive .store-product-single-pd-cat-info.slick-slide {
+    text-align: center;
+    color: black;
+    margin: 0 0.3% 0 0;
+}
+body.archive .store-product-single-pd-cat-info.slick-slide > img{
+    padding-left: 10% !important;
+    padding-right: 10% !important;
+}
+body.archive .vendor-page-store-product{
+    margin-bottom: 5%;
+    background-color: white;
+}
+body.archive .vendor-page-store-product h3{
+    font-weight: bold;
+}
+body.archive .vendor-page-store-product .header{
+    display: block;
+}
+body.archive .vendor-page-store-product .header h3{
+    display: inline-block;
+}
+body.archive .vendor-page-store-product .header span{
+    display: inline-block;
+    float: right;
+}
+body.archive .vendor-page-store-product .header span a{
+    color: #BDBDBD;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+body.archive p.woocommerce-info {
+    display: none;
+}
+
+body.archive .added_to_cart.wc-forward {
+    margin-top: 10%;
+    width: 100%;
+}
+
+body.archive button.slick-arrow {
+    margin-top: -4%;
+}
+
+body.archive a.button.add_to_cart_button ,
+body.archive .button.product_type_external {
+    width: 100%;
+    padding: 5%;
+}
+
+body.archive span.price {
+    width: 60%;
+    display: inline-block;
+    margin-top: 10%;
+}
+body.archive a.button.add_to_cart_button {
+    display: inline-block;
+    width: 26%;
+    border-radius: 50%;
+    background-color: #2196F3;
+    color: white;
+    margin-top: 12%;
+    float: right;
+    height: 2.6em;
+}
+body.archive a.button.add_to_cart_button:after{
+    content: '\f07a' !important;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1!important;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    vertical-align: baseline;
+    height: 1em;
+}
+body.archive span.price bdi{
+    color: #EB6C00;
+    font-weight: bold;
+}
+body.archive span.price del bdi{
+    color: black;
+    font-weight: 100;
+}
+
+body.archive #orderby {
+    float: right;
+}
+body.archive .woocommerce-ordering,
+body.archive span.onsale,
+body.archive .woocommerce-result-count {
+    display: none;
+}
+
+body.archive #main > div > div:nth-child(1) > nav {
+    display: none;
+}
+
+body.archive .woocommerce-pagination .page-numbers li .page-numbers{
+    background-color: white;
+}
+
+body.archive .woocommerce-pagination .page-numbers li .prev.page-numbers,
+body.archive .woocommerce-pagination .page-numbers li .page-numbers.current,
+body.archive .woocommerce-pagination .page-numbers li .next.page-numbers {
+    border-radius: 50%;
+    background-color: #2196F3;
+    color: white;
+}
+body.archive .woocommerce-pagination {
+    width: 100%;
+}
+@media screen and (max-width: 1024px) {
+    body.archive #masthead div.col-full > div.site-search {
+        width: 50% !important;
+    }
+
+    body.archive #masthead > .col-full {
+        padding-left: 0%;
+    }
+
+    #masthead #site-header-cart {
+        width: 150px;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    body.archive .vendor-category-app-link {
+        width: 15%;
+        margin-top: 3%;
+    }
+
+    body.archive a.button.add_to_cart_button {
+        width: 20%;
+    }
+}
+@media screen and (max-width: 480px) {
+    body.archive #masthead div.site-title {
+        margin-left: 80%;
+    }
+
+    body.archive .vendor-page-store-product{
+        margin-bottom: 15%;
+    }
+
+    body.archive a.button.add_to_cart_button {
+        width: 30%;
+        height: 40px;
+    }
+
+    body.archive .woocommerce-products-header{
+        padding: 0 0 5.9968353111em 20px;
+    }
+
+    body.archive .vendor-category-app-link {
+        width: 20%;
+        margin-top: 8%;
+        font-size: 13px;
+    }
+
+    body.archive .woocommerce-products-header {
+        background-size: 100% 100% !important;
+    }
+
+    body.archive .vendor-category-img {
+        margin-right: 4%;
+        margin-top: 4%;
+    }
+    body.archive .vendor-category-description {
+        margin-top: 4%;
+    }
+
+    body.archive .vendor-category-description .woocommerce-products-header__title {
+        font-size: 15px;
+    }
+
+    body.archive .vendor-category-description .term-description {
+        font-size: 13px;
+    }
+
+}
+
+@media screen and (max-width: 320px) {
+    body.archive #masthead div.site-title {
+        margin-left: 50%;
+    }
+
+    body.archive .vendor-category-app-link{
+        margin-top: -5%;
+        width: 30%;
+        margin-right: 44%;
+    }
+    body.archive div.child-term-tab {
+        margin-bottom: 10%;
+    }
+    body.archive #masthead {
+        height: 100px;
+    }
+}
