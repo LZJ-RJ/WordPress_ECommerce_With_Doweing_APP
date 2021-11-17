@@ -44,12 +44,12 @@ jQuery(function ($) {
         } else if ($(window ).width() > 320 && $(window ).width() <= 480) {
             $('.home-page-hot-channel-pd').slick({
                 infinite: true,
-                slidesToShow: 3,
+                slidesToShow: 2,
                 rows: 1,
             });
             $('.home-page-hot-product-pd').slick({
                 infinite: true,
-                slidesToShow: 3,
+                slidesToShow: 2,
                 rows: 1,
             });
             $('.home-page-doweing-category-pd').slick({

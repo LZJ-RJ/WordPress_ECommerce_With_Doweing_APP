@@ -50,7 +50,7 @@ input::-webkit-inner-spin-button {
 }
 .single-product .wrap2.plus,
 .woocommerce-cart.woocommerce-page .wrap2.plus {
-    margin: 4.7px 4.7px 4.7px 15px !important;
+    margin: 4.7px 4.7px 4.7px 32px !important;
 }
 .single-product .wrap2.sub,
 .woocommerce-cart.woocommerce-page .wrap2.sub {
@@ -114,7 +114,7 @@ input::-webkit-inner-spin-button {
 .single-product .single-pd-spec-option-content {
     display: inline-block;
     float: right;
-    width: 80%;
+    width: 70%;
     margin-top: -5px;
 }
 
@@ -305,6 +305,10 @@ input::-webkit-inner-spin-button {
     font-weight: bold;
 }
 
+.single-product #main div > span.onsale {
+    display: none !important;
+}
+
 .woocommerce-cart.woocommerce-page  tr.woocommerce-cart-form__cart-item.cart_item > td.product-name .woocommerce-Price-amount.amount{
     color: #EB6C00;
     font-weight: bold;
@@ -349,7 +353,7 @@ input::-webkit-inner-spin-button {
 }
 #masthead div.col-full > div.site-branding {
     width: fit-content!important;
-    margin-bottom: 0;
+    margin-bottom: 0px;
 }
 #masthead div.col-full > div.site-search {
     float: left;
@@ -400,6 +404,39 @@ div.block.footer-widget-1 > div.widget.widget_text{
     float: right;
 }
 div.block.footer-widget-1 > div.widget_nav_menu ul li::before {
+    display: none;
+}
+
+/*手機板圖標*/
+.storefront-handheld-footer-bar ul li.search > a::before {
+    content: '';
+}
+footer#colophon > div > div.storefront-handheld-footer-bar > ul > li.search > a {
+    background-image: url(/wp-content/uploads/2021/11/ic_tabbar_explore_ligte_normal@2x.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+div.storefront-handheld-footer-bar > ul > li.cart > a::before {
+    content: '';
+}
+footer#colophon > div > div.storefront-handheld-footer-bar > ul > li.cart > a{
+    background-image: url(/wp-content/uploads/2021/11/ic_appbar_shop_cart_normal@2x.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+div.storefront-handheld-footer-bar > ul > li.my-account > a::before {
+    content: '';
+}
+footer#colophon > div > div.storefront-handheld-footer-bar > ul > li.my-account > a{
+    background-image: url(/wp-content/uploads/2021/11/ic_tabbar_personal_set_normal@2x.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+/*手機板圖標*/
+
+.global-page-return {
     display: none;
 }
 @media screen and (min-width: 1024px){
@@ -569,9 +606,13 @@ div.block.footer-widget-1 > div.widget_nav_menu ul li::before {
         margin-right: 0;
     }
     #masthead #site-header-cart {
-        width: 145px;
+        width: 160px;
     }
 
+    .site-header-cart .widget_shopping_cart .product_list_widget li a.remove {
+        width: 100%;
+        display: block;
+    }
 }
 @media screen and (max-width: 1023px){
     .single-product .woocommerce-product-gallery__image.single-product-main-image.slick-slide.slick-current.slick-active,
@@ -618,7 +659,17 @@ div.block.footer-widget-1 > div.widget_nav_menu ul li::before {
     }
 }
 
+@media screen and (max-width: 768px) {
+    #masthead {
+        height: 120px;
+    }
+}
+
 @media screen and (max-width: 767px) {
+    .global-page-return {
+        display: block;
+    }
+
     .single-product .tab-pd-wrapper.desc,
     .single-product .tab-pd-wrapper.spec{
         padding-left: 3%;
@@ -670,7 +721,7 @@ div.block.footer-widget-1 > div.widget_nav_menu ul li::before {
     }
 
     #masthead div.site-title  {
-        background-image: url(/wp-content/uploads/2021/09/icon-doweing-logo3@2x.png);
+        background-image: url(/wp-content/uploads/2021/09/icon-doweing-logo3.png);
         width: 100px;
         height: 100px;
         margin-left: 150%;
@@ -797,6 +848,12 @@ div.block.footer-widget-1 > div.widget_nav_menu ul li::before {
     }
     .single-product .product-type-simple .wpgs-for.slick-initialized.slick-slider .slick-list {
         height: 430px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #masthead {
+        height: 80px;
     }
 }
 
@@ -950,6 +1007,15 @@ div.block.footer-widget-1 > div.widget_nav_menu ul li::before {
         width: 100px;
         height: 100px;
         margin-left: 80%;
+    }
+
+    #masthead div.col-full > div.site-branding {
+        margin-bottom: -80px;
+    }
+}
+@media screen and (min-width: 1px) and (max-width: 321px) {
+    #masthead div.site-title {
+        background-image: url(/wp-content/uploads/2021/09/icon-doweing-logo3.png);
     }
 }
 

@@ -45,14 +45,31 @@ if ( explode('-', $parent->slug)[0] == 'vendor') {
     $is_vendor = false;
 }
 
+// Redirect
+$divide_by_slash = explode('/', $_SERVER['REQUEST_URI']);
+if ($is_parent &&
+    $parent->slug == 'doweing-hot-product' ||
+    $parent->slug == 'doweing-recommend' ||
+    $parent->slug == 'doweing-special-plan'
+) {
+//    not redirect
+} else if ($divide_by_slash[count($divide_by_slash)-2] == $current_category->slug && $current_category->slug == $parent->slug) {
+    header("Location: ".get_term_link($current_category->term_id, 'product_cat').'/'.$current_category->slug.'-store');
+}
+
 $thumbnail_id = get_term_meta($parent->term_id, 'thumbnail_id', true);
 $imageUrl = wp_get_attachment_url($thumbnail_id);
 
 $bg_img_id = get_term_meta($parent->term_id, 'vendor_category_bg_img', 1);
 $app_link = get_term_meta($parent->term_id, 'vendor_category_app_link', 1);
 $bgImgUrl = wp_get_attachment_url($bg_img_id);
+if (!($is_parent &&
+    $parent->slug == 'doweing-hot-product' ||
+    $parent->slug == 'doweing-recommend' ||
+    $parent->slug == 'doweing-special-plan')
+) {
 ?>
-    <header class="woocommerce-products-header" style="background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6)), no-repeat url(<?=$bgImgUrl?>);background-size: 100%;">
+    <header class="woocommerce-products-header" style="background-size: cover;background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6)), no-repeat url(<?=$bgImgUrl?>);">
         <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
         <div class="vendor-category-img">
             <img
@@ -90,6 +107,7 @@ $bgImgUrl = wp_get_attachment_url($bg_img_id);
         </div>
     </header>
 <?php
+}
 if ($is_vendor){
     $vendor_child = get_terms(
             array(
@@ -129,11 +147,12 @@ if ($is_vendor){
 
     switch (1) {
         case $current_category->slug == $parent->slug . '-store':
+            echo '<link rel="stylesheet" href="/wp-content/themes/storefront-child/assets/css/vendor-store.css" media="all">';
             include_once ABSPATH . 'wp-content/themes/storefront-child/vendor-store.php';
             break;
         case $current_category->slug == $parent->slug . '-product':
-        case $current_category->slug == $parent->slug . '-new':
         case $current_category->slug == $parent->slug . '-time-limit':
+        case $current_category->slug == $parent->slug . '-new':
             echo '<link rel="stylesheet" href="/wp-content/themes/storefront-child/assets/css/vendor-product.css" media="all">';
             include_once ABSPATH . 'wp-content/themes/storefront-child/vendor-product.php';
             break;
@@ -142,13 +161,13 @@ if ($is_vendor){
             include_once ABSPATH . 'wp-content/themes/storefront-child/vendor-category.php';
             break;
         default:
+            echo '<link rel="stylesheet" href="/wp-content/themes/storefront-child/assets/css/other-vendor.css" media="all">';
             include_once ABSPATH . 'wp-content/themes/storefront-child/vendor-product.php';
     }
-
-    $show_different_pd_list_slug = array(
-            $parent->slug . '-store');
 } else {
-    $show_different_pd_list_slug = array();
+    echo '<link rel="stylesheet" href="/wp-content/themes/storefront-child/assets/css/other-archive-product.css" media="all">';
+    include_once ABSPATH . 'wp-content/themes/storefront-child/other-archive-product.php';
+
 }
 
 

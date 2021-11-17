@@ -1,0 +1,5 @@
+body.archive #orderby,
+body.archive ul.products li.product .star-rating,
+body.archive #main > div.woocommerce.columns-6 > ul > li > a.button.product_type_variable {
+    display: none;
+}

@@ -51,8 +51,101 @@ class StorefrontChildTheme
         add_filter('woocommerce_product_tabs', [$this, 'modify_pd_tab'], 90);
         add_filter('storefront_handheld_footer_bar_links', [$this, 'modify_footer_bar'], 10, 1);
         add_action('admin_menu', [$this, 'add_menu_page']);
+        add_filter('pre_get_posts', [$this, 'posts_for_current_author']);
+        add_filter('wp_head', [$this, 'redirect_to_somewhere']);
+
+        add_action( 'init', [$this, 'my_custom_endpoints'] );
+        add_filter( 'woocommerce_account_menu_items', [$this, 'my_custom_my_account_menu_items']);
+        add_action('woocommerce_account_my-wishlist_endpoint', [$this, 'my_custom_endpoint_content']);
+        add_filter( 'query_vars', [$this, 'my_custom_query_vars'], 0 );
+        add_action( 'wp_loaded', [$this, 'my_custom_flush_rewrite_rules']);
+
+        add_action( 'storefront_before_header', [$this, 'add_return_icon']);
     }
 
+    public function add_return_icon() {
+    ?>
+            <style>
+                .global-page-return {
+                    background-image: url(/wp-content/uploads/2021/11/ic_basic_arrow_left_normal@3x.png);
+                    float:left;
+                    color:#BDBDBD;
+                    margin-top: 8%;
+                    margin-left: 10%;
+                }
+
+                @media screen and (max-width: 320px) {
+                    .global-page-return {
+                        margin-top: 12%;
+                    }
+                }
+            </style>
+            <script>
+                jQuery('body').on('click', '.global-page-return', function (){
+                    window.history.go(-1);
+                    return false;
+                });
+            </script>
+        <a class="global-page-return" href="#"><i class="fas fa-chevron-left"></i></a>
+        <?php
+    }
+
+    public function my_custom_flush_rewrite_rules() {
+        flush_rewrite_rules();
+    }
+
+    public function my_custom_query_vars( $vars ) {
+        $vars[] = 'my-wishlist';
+
+        return $vars;
+    }
+
+    public function my_custom_endpoints() {
+        add_rewrite_endpoint( 'my-wishlist', EP_ROOT | EP_PAGES );
+    }
+
+    public function my_custom_endpoint_content( $current_page ) {
+        $current_page    = empty( $current_page ) ? 1 : absint( $current_page );
+        include_once ABSPATH . 'wp-content/themes/storefront-child/woocommerce/myaccount/my-wishlist.php';
+    }
+
+    public function my_custom_my_account_menu_items($items) {
+        $items = array(
+//            'dashboard'         => __( 'Dashboard', 'woocommerce' ),
+            'orders'            => __( 'Orders', 'woocommerce' ),
+            //'downloads'       => __( 'Downloads', 'woocommerce' ),
+            'edit-account'      => __( 'Edit Account', 'woocommerce' ),
+            'edit-address'    => __( 'Addresses', 'woocommerce' ),
+            //'payment-methods' => __( 'Payment Methods', 'woocommerce' ),
+            'my-wishlist'      => __( 'Wishlist', 'woocommerce' ),
+            'customer-logout'   => __( 'Logout', 'woocommerce' ),
+        );
+
+        return $items;
+    }
+
+    public function redirect_to_somewhere(){
+        if ($_SERVER['REQUEST_URI'] == '/shop/') {
+            header("Location: ".home_url());
+        }
+
+        if ($_SERVER['REQUEST_URI'] == '/my-account/') {
+            header("Location: ".home_url()."/my-account/orders/");
+        }
+    }
+
+    public function posts_for_current_author($query) {
+        global $pagenow;
+
+        if( 'edit.php' != $pagenow || !$query->is_admin )
+            return $query;
+
+        if( !current_user_can( 'edit_others_posts' ) ) {
+            global $user_ID;
+            $query->set('author', $user_ID );
+        }
+        return $query;
+    }
 
     public function setting_doweing_category()
     {
@@ -210,6 +303,10 @@ class StorefrontChildTheme
             wp_enqueue_style('vendor-css', get_stylesheet_directory_uri() . '/assets/css/vendor.css');
             wp_enqueue_script('vendor-js', get_stylesheet_directory_uri() . '/assets/js/vendor.js');
         }
+
+        if (strpos($_SERVER['REQUEST_URI'], '/my-account/') !== false) {
+            wp_enqueue_style('myaccount-css', get_stylesheet_directory_uri() . '/assets/css/myaccount.css');
+        }
     }
 
     public function add_before_quantity_btn()
@@ -250,9 +347,8 @@ class StorefrontChildTheme
             }
             $html .= '</div></div><br>';
 
-            if ($attribute_name == 'pa_color') {
-                $html .= '<br><br>';
-            }
+            $html .= '<br><br>';
+
         }
         echo $html;
     }
@@ -273,7 +369,10 @@ class StorefrontChildTheme
         global $post;
         $terms = get_the_terms($post->ID, 'product_cat');
         foreach ($terms as $term) {
-            $topParentTerm = $this->get_term_top_most_parent($term, 'product_cat');
+            if (strpos($term->slug, 'vendor-') == 0) {
+                $topParentTerm = $this->get_term_top_most_parent($term, 'product_cat');
+                break;
+            }
         }
         $thumbnail_id = get_term_meta($topParentTerm->term_id, 'thumbnail_id', true);
         $imageUrl = wp_get_attachment_url($thumbnail_id);

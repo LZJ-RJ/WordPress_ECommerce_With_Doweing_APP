@@ -15,8 +15,11 @@ $vendor_child = get_terms(
 foreach($vendor_child as $item) {
     ?>
     <div class="sidebar-item">
-        <a class="item-link" href="<?=get_term_link($item->term_id, 'product_cat');?>"><span><?=$item->name?></span></a>
-        <span class="item-des"><?=sizeof(wc_get_products(['category' => array($item->slug)]))?> 商品</span>
+        <img class="vendor-category-mobile-img" referrerpolicy="no-referrer" src="http://doweing.store/wp-content/uploads/2021/10/-icon-1-e1635227387634.jpg" style="">
+        <div>
+            <a class="item-link" href="<?=get_term_link($item->term_id, 'product_cat');?>"><span><?=$item->name?></span></a>
+            <span class="item-des"><?=sizeof(wc_get_products(['category' => array($item->slug)]))?> 商品</span>
+        </div>
     </div>
     <?php
 }

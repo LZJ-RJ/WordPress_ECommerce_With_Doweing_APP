@@ -8,7 +8,7 @@ echo do_shortcode('[smartslider3 slider="2"]');
 $terms = get_terms(array(
     'taxonomy' => 'product_cat',
     'hide_empty' => false,
-    'child_of' => 38,
+    'parent' => 38,
     'limit' => -1,
 ));
 ?>
@@ -67,10 +67,7 @@ $hot_product_category_id = 40;
 $hot_products = wc_get_products(array(
     'limit' => -1,
     'post_status' => "publish",
-    "tax_query" => array(
-        "taxonomy" => "product_cat",
-        'child_of' => $hot_product_category_id
-    )
+    'category' => array(get_term($hot_product_category_id)->slug)
 ));
 if (count($hot_products) > 7) {
     $is_more = true;
@@ -142,10 +139,7 @@ $recommend_product_category_id = 42;
 $recommend_products = wc_get_products(array(
     'limit' => -1,
     'post_status' => "publish",
-    "tax_query" => array(
-        "taxonomy" => "product_cat",
-        'child_of' => $recommend_product_category_id
-    )
+    "category" => array(get_term($recommend_product_category_id)->slug)
 ));
 if (count($recommend_products) > 14) {
     $is_more = true;

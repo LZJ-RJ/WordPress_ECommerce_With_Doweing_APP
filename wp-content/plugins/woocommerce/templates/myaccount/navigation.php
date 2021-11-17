@@ -20,9 +20,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 do_action( 'woocommerce_before_account_navigation' );
-?>
 
+$profile_img_id = get_user_meta(get_current_user_id(), 'wp_metronet_image_id', 1);
+$imageUrl = wp_get_attachment_url($profile_img_id);
+$user = get_user_by('id', get_current_user_id());
+$user_email = $user->user_email;
+$user_display_name = $user->display_name;
+?>
 <nav class="woocommerce-MyAccount-navigation">
+    <div class="single-pd-cat-info" href="javascript:void(0);">
+        <img
+                class="single-pd-cat-thumbnail"
+                referrerpolicy="no-referrer"
+                src="<?=$imageUrl?>"
+        />
+        <div class="single-pd-cat-text">
+                  <span class="single-pd-cat-name">
+            <?=$user_display_name?>
+            </span>
+            <span class="single-pd-cat-des">
+           <?=$user_email?>
+            </span>
+        </div>
+    </div>
 	<ul>
 		<?php foreach ( wc_get_account_menu_items() as $endpoint => $label ) : ?>
 			<li class="<?php echo wc_get_account_menu_item_classes( $endpoint ); ?>">

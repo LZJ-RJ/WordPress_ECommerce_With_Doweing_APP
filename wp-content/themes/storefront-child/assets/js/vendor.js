@@ -63,7 +63,7 @@ jQuery(function ($) {
         } else if ($(window ).width() > 320 && $(window ).width() <= 480) {
             $('.vendor-page-store-product-pd').slick({
                 infinite: true,
-                slidesToShow: 3,
+                slidesToShow: 2,
                 rows: 1,
             });
         } else if ($(window ).width() <= 320) {
@@ -92,6 +92,16 @@ jQuery(function ($) {
         if ( current_href.includes(sidebar_item_href) ) {
             $(value).addClass('selected');
             $(value).find('.item-link').addClass('selected');
+        }
+    });
+
+    $("body.archive div.child-term-tab").on("mouseenter mouseleave", function (event) { //挷定滑鼠進入及離開事件
+        if (event.type == "mouseenter") {
+            console.log('enter');
+            $(this).css({"overflow-y": "scroll"}); //滑鼠進入
+        } else {
+            $(this).scrollTop(0).css({"overflow-y": "hidden"}); //滑鼠離開
+            console.log('out');
         }
     });
 })
