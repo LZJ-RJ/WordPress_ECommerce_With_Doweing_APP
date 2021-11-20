@@ -35,9 +35,12 @@ body.woocommerce-account a.button.add_to_cart_button {
     margin-top: 12%;
     float: right;
     height: 2.6em;
+    background-image: url(/wp-content/uploads/2021/11/ic_appbar_shop_cart_dk_normal@2x.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
 }
 body.woocommerce-account a.button.add_to_cart_button:after{
-    content: '\f07a' !important;
     text-align: center;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

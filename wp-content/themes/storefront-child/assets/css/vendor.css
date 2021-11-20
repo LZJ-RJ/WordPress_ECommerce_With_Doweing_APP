@@ -150,13 +150,16 @@ body.archive a.button.add_to_cart_button {
     margin-top: -30%;
     float: right;
     height: 2.6em;
+    background-image: url(/wp-content/uploads/2021/11/ic_appbar_shop_cart_dk_normal@2x.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
 }
 body.archive li.sale a.button.add_to_cart_button {
     margin-top: -43%;
 }
 
 body.archive a.button.add_to_cart_button:after{
-    content: '\f07a' !important;
     text-align: center;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

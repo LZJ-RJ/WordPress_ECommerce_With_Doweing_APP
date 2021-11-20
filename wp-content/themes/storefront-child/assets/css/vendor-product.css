@@ -43,7 +43,7 @@ body.archive #main > div > ul > li.product.type-product.status-publish a.woocomm
 
 @media screen and (max-width: 768px) {
     body.archive #masthead {
-        height: 70px;
+        height: 120px;
     }
 
     body.archive a.button.add_to_cart_button {
@@ -71,6 +71,10 @@ body.archive #main > div > ul > li.product.type-product.status-publish a.woocomm
     }
     body.archive li.sale span.price {
         width: 65%;
+    }
+
+    body.archive ul.products li.product .button {
+        margin-bottom: -18px !important;
     }
 }
 

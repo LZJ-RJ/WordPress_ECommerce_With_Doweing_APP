@@ -54,12 +54,12 @@ jQuery(function ($) {
             });
             $('.home-page-doweing-category-pd').slick({
                 infinite: true,
-                slidesToShow: 3,
+                slidesToShow: 2,
                 rows: 2,
             });
             $('.home-page-recommend-product-pd').slick({
                 infinite: true,
-                slidesToShow: 3,
+                slidesToShow: 2,
                 rows: 1
             })
         } else if ($(window ).width() <= 320) {

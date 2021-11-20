@@ -307,6 +307,10 @@ class StorefrontChildTheme
         if (strpos($_SERVER['REQUEST_URI'], '/my-account/') !== false) {
             wp_enqueue_style('myaccount-css', get_stylesheet_directory_uri() . '/assets/css/myaccount.css');
         }
+
+        if (is_product()) {
+            wp_enqueue_style('single-product-css', get_stylesheet_directory_uri() . '/assets/css/single-product.css');
+        }
     }
 
     public function add_before_quantity_btn()

@@ -69,7 +69,7 @@ if (!($is_parent &&
     $parent->slug == 'doweing-special-plan')
 ) {
 ?>
-    <header class="woocommerce-products-header" style="background-size: cover;background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6)), no-repeat url(<?=$bgImgUrl?>);">
+    <header class="woocommerce-products-header" style="background-size: 100%!important;background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6)), no-repeat url(<?=$bgImgUrl?>);">
         <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
         <div class="vendor-category-img">
             <img
@@ -157,6 +157,7 @@ if ($is_vendor){
             include_once ABSPATH . 'wp-content/themes/storefront-child/vendor-product.php';
             break;
         case strpos($current_category->slug, $parent->slug . '-category') !== false :
+            echo '<script src="' . get_stylesheet_directory_uri() . '/assets/js/vendor-category.js"></script>';
             echo '<link rel="stylesheet" href="/wp-content/themes/storefront-child/assets/css/vendor-category.css" media="all">';
             include_once ABSPATH . 'wp-content/themes/storefront-child/vendor-category.php';
             break;

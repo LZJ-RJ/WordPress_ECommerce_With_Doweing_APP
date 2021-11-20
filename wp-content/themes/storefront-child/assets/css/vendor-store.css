@@ -9,6 +9,38 @@ body.archive a.button.add_to_cart_button {
 
     body.archive span.price {
         width: 60% !important;
+        font-size: 20px;
+    }
+
+    body.archive #main div.vendor-page-store-product-pd.slick-slider
+    > div > div > div.store-product-single-pd-cat-info.slick-slide a span {
+        display: block;
+        margin-top: 11%;
+        font-size: 25px;
+    }
+
+    body.archive a.button.add_to_cart_button {
+        width: 15% !important;
+    }
+
+    body.archive #main div div.vendor-page-store-product-pd.slick-slider > div > div
+    > div.store-product-single-pd-cat-info.slick-slide > span > del {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body.archive a.button.add_to_cart_button {
+        width: 20%;
+        height: 35px!important;
+    }
+
+    body.archive #main div.vendor-page-store-product-pd.slick-slider
+    > div > div > div.store-product-single-pd-cat-info.slick-slide a span {
+        font-size: 20px;
+    }
+    body.archive span.price {
+        font-size: 15px;
     }
 }
 
@@ -16,5 +48,13 @@ body.archive a.button.add_to_cart_button {
     body.archive a.button.add_to_cart_button {
         width: 30%!important;
         float: right;
+    }
+
+    body.archive #main div.vendor-page-store-product-pd.slick-slider
+    > div > div > div.store-product-single-pd-cat-info.slick-slide a span {
+        font-size: 15px;
+    }
+    body.archive span.price {
+        font-size: 10px;
     }
 }

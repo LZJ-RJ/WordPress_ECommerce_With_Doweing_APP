@@ -39,10 +39,13 @@ body.archive a.button.product_type_external {
     margin-top: -33%!important;
     float: right;
     height: 2.6em;
+    background-image: url(/wp-content/uploads/2021/11/ic_appbar_shop_cart_dk_normal@2x.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
 }
 body.archive a.button.add_to_cart_button:after,
 body.archive a.button.product_type_external:after{
-    content: '\f07a' !important;
     text-align: center;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -160,8 +163,8 @@ body.archive a.button.product_type_external {
         width: 22%!important;
         height: 38px !important;
         line-height: 1;
-        margin-top: -4% !important;
-        margin-right: 0%;
+        margin-top: 0 !important;
+        margin-right: 0;
         float: right;
     }
 
@@ -183,17 +186,17 @@ body.archive a.button.product_type_external {
     body.archive a.button.product_type_external {
         margin-top: 4% !important;
         margin-right: 40%;
-        float: right;
+        float: left;
         width: 25%!important;
         line-height: 1.5;
     }
-
+    body.archive a.button.product_type_external {
+        float: initial;
+        margin-right: 0;
+    }
     body.archive #main > div > ul > li.product.type-product a.woocommerce-loop-product__link > span.price {
         width: 65%;
-    }
-
-    body.archive #main > div > ul > li.product.type-product a.woocommerce-loop-product__link > span.price {
-        font-size: 13px;
+        font-size: 18px;
     }
 }
 
@@ -217,9 +220,9 @@ body.archive a.button.product_type_external {
     body.archive a.button.add_to_cart_button {
         margin-top: 0 !important;
         margin-right: -10% !important;
-        width: 35% !important;
-        height: 42px !important;
-        line-height: 2;
+        width: 28% !important;
+        height: 36px !important;
+        line-height: 1.5;
     }
 
     body.archive li.sale a.button.add_to_cart_button {
@@ -228,10 +231,14 @@ body.archive a.button.product_type_external {
 
     body.archive a.button.product_type_external {
         margin-top: 4% !important;
-        margin-right: 25% !important;
+        margin-right: 0 !important;
     }
 
     body.archive li.sale a.button.product_type_external, body.archive a.button.product_type_external {
         width: 35% !important;
+    }
+    body.archive #main > div > ul > li.product.type-product a.woocommerce-loop-product__link > span.price {
+        width: 70%;
+        font-size: 14px;
     }
 }

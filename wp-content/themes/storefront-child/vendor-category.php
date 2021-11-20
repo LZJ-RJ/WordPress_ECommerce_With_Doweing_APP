@@ -13,9 +13,11 @@ $vendor_child = get_terms(
         </div>
     <?php
 foreach($vendor_child as $item) {
+    $thumbnail_id = get_term_meta($item->term_id, 'thumbnail_id', true);
+    $imageUrl = wp_get_attachment_url($thumbnail_id);
     ?>
     <div class="sidebar-item">
-        <img class="vendor-category-mobile-img" referrerpolicy="no-referrer" src="http://doweing.store/wp-content/uploads/2021/10/-icon-1-e1635227387634.jpg" style="">
+        <img class="vendor-category-mobile-img" referrerpolicy="no-referrer" src="<?=$imageUrl?>">
         <div>
             <a class="item-link" href="<?=get_term_link($item->term_id, 'product_cat');?>"><span><?=$item->name?></span></a>
             <span class="item-des"><?=sizeof(wc_get_products(['category' => array($item->slug)]))?> 商品</span>

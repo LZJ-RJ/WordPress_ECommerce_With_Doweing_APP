@@ -39,13 +39,13 @@ if ( explode('-', $parent->slug)[0] == 'vendor') {
     $is_vendor = false;
 }
 
-if ( $parent->slug == 'doweing-special-plan' || $parent->slug == 'doweing-hot-product') {
+if ( in_array($parent->slug, ['doweing-special-plan', 'doweing-hot-product', 'doweing-recommend']) ) {
     $is_doweing = true;
 } else {
     $is_doweing = false;
 }
 
-if ($is_vendor || $is_doweing) {
+if ($is_vendor || $is_doweing || is_product()) {
     echo apply_filters(
         'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
         sprintf(

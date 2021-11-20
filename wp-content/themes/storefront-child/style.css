@@ -879,16 +879,6 @@ footer#colophon > div > div.storefront-handheld-footer-bar > ul > li.my-account 
         margin-top: 3%;
     }
 
-    .single-pd-cat-info,
-    #tab-description,
-    #tab-pd_spec,
-    #tab-reviews,
-    .single-product section.up-sells.upsells.products,
-    .single-product section.related.products {
-        border-top: 1rem solid #EEEEEE;
-        width: 100%;
-    }
-
     .single-product div.product form.cart .quantity {
         margin-right: 0;
     }
