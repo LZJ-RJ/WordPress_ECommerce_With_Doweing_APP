@@ -1,6 +1,5 @@
 body.archive #orderby,
-body.archive ul.products li.product .star-rating,
-body.archive #main > div.woocommerce.columns-6 > ul > li > a.button.product_type_variable {
+body.archive ul.products li.product .star-rating {
     display: none;
 }
 @media screen and (max-width: 768px) {
@@ -18,19 +17,24 @@ body.archive #main > div.woocommerce.columns-6 > ul > li > a.button.product_type
 }
 @media screen and (max-width: 480px) {
     ul.products li.product .woocommerce-loop-product__title {
-        font-size: 25px;
+        font-size: 20px;
     }
     body.archive span.price {
-        font-size: 20px;
+        font-size: 18px;
     }
     body.archive a.button.add_to_cart_button {
         width: 25% !important;
-        height: 3em !important;
+        height: 35px !important;
         margin-top: 4%!important;
     }
 }
 
 
 @media screen and (max-width: 320px) {
-
+    ul.products li.product .woocommerce-loop-product__title {
+        font-size: 16px;
+    }
+    body.archive span.price {
+        font-size: 14px;
+    }
 }

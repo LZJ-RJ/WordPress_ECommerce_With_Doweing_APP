@@ -1,0 +1,145 @@
+body.archive #main > h3 {
+    margin-top: 2%;
+    font-weight: bold;
+}
+
+body.archive a.button.add_to_cart_button ,
+body.archive .button.product_type_external {
+    width: 100%;
+    padding: 5%;
+}
+
+body.archive span.price {
+    width: 60%;
+    display: inline-block;
+}
+body.archive a.button.add_to_cart_button {
+    display: inline-block;
+    width: 25%;
+    border-radius: 50%;
+    background-color: #2196F3;
+    color: white;
+    margin-top: -34%;
+    height: 2.6em;
+    float: left;
+    margin-left: 58%;
+    background-image: url(/wp-content/uploads/2021/11/ic_appbar_shop_cart_dk_normal@2x.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+body.archive li.sale a.button.add_to_cart_button {
+    margin-top: -43%;
+}
+
+body.archive a.button.add_to_cart_button:after {
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1!important;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    vertical-align: baseline;
+    height: 1em;
+}
+body.archive span.price bdi{
+    color: #EB6C00;
+    font-weight: bold;
+}
+body.archive span.price del bdi{
+    color: black;
+    font-weight: 100;
+}
+
+body.archive div.star-rating,
+body.archive div.storefront-sorting div:nth-child(1),
+body.archive div.storefront-sorting form:nth-child(1),
+body.archive div.storefront-sorting p:nth-child(2),
+body.archive span.onsale {
+    display: none !important;
+}
+
+ul.products li.product {
+    display: inline-block;
+}
+.woocommerce-ordering select.orderby{
+    color: #9E9E9E;
+}
+body.archive p.woocommerce-info {
+    display: block !important;
+}
+@media screen and (max-width: 768px) {
+    body.archive a.button.add_to_cart_button {
+        width: 30%;
+        float: right;
+        height: 30px;
+        margin-top: -45%;
+        margin-right: -10%;
+    }
+
+    body.archive li.sale a.button.add_to_cart_button {
+        margin-top: -58%;
+    }
+
+    body.archive span.price {
+        width: 84%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #masthead div.site-title {
+        margin-left: 105%;
+    }
+
+    ul.products li.product {
+        width: 45%;
+        display: inline-block;
+    }
+
+    ul.products li.product:nth-child(odd){
+        margin-left: 1.5%;
+        margin-right: 6%;
+        float: left;
+    }
+
+    ul.products li.product:nth-child(even){
+        float: left;
+    }
+
+    body.archive a.button.add_to_cart_button {
+        width: 20%;
+        height: 40px;
+        margin-top: -23%;
+        margin-right: 17%;
+    }
+
+    body.archive ul.products li.product .price {
+        float: left;
+        width: 65%;
+    }
+
+    body.archive li.sale a.button.add_to_cart_button {
+        margin-top: -31%;
+        margin-right: 15%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    #masthead div.site-title {
+        margin-left: 59%;
+    }
+
+    body.archive a.button.add_to_cart_button {
+        width: 20%;
+        height: 25px;
+        margin-right: 13%;
+        margin-top: -34%;
+    }
+
+    body.archive li.sale a.button.add_to_cart_button {
+        margin-top: -39%;
+    }
+}

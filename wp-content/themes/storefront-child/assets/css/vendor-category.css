@@ -1,7 +1,3 @@
-body.archive a.button.add_to_cart_button {
-    margin-top: -30% !important;
-}
-
 body.archive li.sale a.button.add_to_cart_button {
     margin-top: -37% !important;
 }
@@ -51,7 +47,7 @@ body.archive span.price {
 
 body.archive a.button.add_to_cart_button {
     width: 25% !important;
-    margin-top: -37% !important;
+    margin-top: -30% !important;
 }
 
 body.archive div.woocommerce.columns-4 > ul > li.product.type-product >
@@ -143,7 +139,7 @@ body.archive .sidebar-item {
         width: 30% !important;
         text-align: center;
         line-height: 2;
-        margin-top: 10% !important;
+        margin-top: -10% !important;
     }
 
     body.archive li.sale span.price {
@@ -151,7 +147,7 @@ body.archive .sidebar-item {
     }
 
     body.archive li.sale a.button.add_to_cart_button {
-        margin-top: 10% !important;
+        margin-top: -1% !important;
     }
 
     body.archive span.price {
@@ -172,6 +168,10 @@ body.archive .sidebar-item {
 }
 
 @media screen and (max-width: 480px) {
+    body.archive #main > div.vendor-category-sidebar > div.sidebar-title {
+        display: none;
+    }
+
     body.archive span.price {
         font-size: 30px;
         text-align: center;
@@ -203,7 +203,9 @@ body.archive .sidebar-item {
     }
 
     body.archive .order-list {
-        width: 60%;
+        float: left;
+        width: 70% !important;
+        margin-left: 2% !important;
     }
 
     body.archive .vendor-category-sidebar {

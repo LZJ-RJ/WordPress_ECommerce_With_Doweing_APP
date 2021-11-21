@@ -51,11 +51,4 @@ jQuery(function ($) {
         window.location = location.origin + location.pathname + '?orderby=' + $(this).attr('attr-orderby');
     })
 
-    $("body.archive div.child-term-tab").on("mouseenter mouseleave", function (event) { //挷定滑鼠進入及離開事件
-        if (event.type == "mouseenter") {
-            $(this).css({"overflow-y": "scroll"}); //滑鼠進入
-        } else {
-            $(this).scrollTop(0).css({"overflow-y": "hidden"}); //滑鼠離開
-        }
-    });
 })

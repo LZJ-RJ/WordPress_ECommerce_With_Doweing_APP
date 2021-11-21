@@ -23,13 +23,14 @@ jQuery(function ($) {
         var urlPath = location.pathname.split('/');
         if ($(window).width() <= 480 &&  urlPath[3] == urlPath[2] + '-category') {
             if (urlPath.length == 5) {
+                // vendor-分類目錄
                 $('body.archive .vendor-category-sidebar').addClass('mobile-style-directory');
                 $('body.archive .order-list').addClass('mobile-style-directory');
                 $('body.archive #main > div.woocommerce').addClass('mobile-style-directory');
             } else if (urlPath.length > 5) {
+                // vendor-分類內頁-顯示商品
                 $('body.archive #main > div.woocommerce > ul > li.product.type-product').addClass('mobile-style-content')
                 $('body.archive .vendor-category-sidebar').addClass('mobile-style-content');
-                $('body.archive .order-list').addClass('mobile-style-content');
                 $('body.archive #main > div.woocommerce').addClass('mobile-style-content');
                 $('body.archive #main > div.woocommerce ul.products li.product img').addClass('mobile-style-content');
                 $('body.archive #main > div.woocommerce ul.products li.product .woocommerce-loop-product__title').addClass('mobile-style-content');

@@ -19,6 +19,7 @@ body.archive .vendor-category-img {
 
 body.archive .vendor-pd-cat-thumbnail {
     width: 100%;
+    border-radius: 50%;
 }
 
 body.archive .vendor-category-description {
@@ -68,10 +69,10 @@ body.archive div.child-term-tab {
     background-color: white;
     margin: 1% 0 1% 0;
     margin-bottom: 3%;
-    overflow-x: hidden;
-    width: 86%;
     height: 30px;
     white-space: nowrap;
+    overflow-x: scroll;
+    width: 99%;
 }
 body.archive .child-term-href {
     color: #BDBDBD;
@@ -139,7 +140,6 @@ body.archive .button.product_type_external {
 body.archive span.price {
     width: 60%;
     display: inline-block;
-    margin-top: 10%;
 }
 body.archive a.button.add_to_cart_button {
     display: inline-block;
@@ -208,6 +208,7 @@ body.archive .woocommerce-pagination .page-numbers li .next.page-numbers {
 body.archive .woocommerce-pagination {
     width: 100%;
 }
+
 @media screen and (max-width: 1024px) {
     body.archive #masthead div.col-full > div.site-search {
         width: 50% !important;
@@ -241,7 +242,11 @@ body.archive .woocommerce-pagination {
 }
 
 @media screen and (max-width: 480px) {
-    #masthead div.col-full > div.site-branding {
+    body.archive.vendor-store #masthead div.col-full > div.site-branding,
+    body.archive.vendor-product #masthead div.col-full > div.site-branding,
+    body.archive.vendor-new #masthead div.col-full > div.site-branding,
+    body.archive.vendor-category #masthead div.col-full > div.site-branding,
+    body.archive.other-vendor #masthead div.col-full > div.site-branding {
         display: none;
     }
 
@@ -268,7 +273,9 @@ body.archive .woocommerce-pagination {
     }
 
     body.archive .vendor-page-store-product{
-        margin-bottom: 15%;
+        margin-bottom: 5%;
+        margin-left: 4%;
+        margin-right: 12%;
     }
 
     body.archive a.button.add_to_cart_button {
@@ -283,8 +290,9 @@ body.archive .woocommerce-pagination {
 
     body.archive .vendor-category-app-link {
         width: 20%;
-        margin-top: 8%;
         font-size: 13px;
+        margin-top: -4%;
+        margin-right: 63%;
     }
 
     body.archive .woocommerce-products-header {

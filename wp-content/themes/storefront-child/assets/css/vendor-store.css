@@ -1,5 +1,5 @@
 body.archive a.button.add_to_cart_button {
-    margin-top: 10% !important;
+    margin-top: 0 !important;
 }
 
 @media screen and (max-width: 768px) {
@@ -32,7 +32,7 @@ body.archive a.button.add_to_cart_button {
 @media screen and (max-width: 480px) {
     body.archive a.button.add_to_cart_button {
         width: 20%;
-        height: 35px!important;
+        height: 30px!important;
     }
 
     body.archive #main div.vendor-page-store-product-pd.slick-slider

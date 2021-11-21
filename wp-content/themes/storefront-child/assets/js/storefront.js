@@ -146,4 +146,8 @@ jQuery(function($){
             $(tmpReviewHtml).insertBefore($('.single-product section.related.products'));
         }
     }
+
+    $('body form.woocommerce-product-search').attr('action', location.origin + location.pathname);
+    $('body form.woocommerce-product-search input[name="post_type"]').remove();
+    $('body form.search-form').remove();
 })

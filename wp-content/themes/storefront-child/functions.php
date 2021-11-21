@@ -38,6 +38,7 @@ class StorefrontChildTheme
     {
         wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js');
         wp_enqueue_script('storefront-child-theme-js', get_stylesheet_directory_uri() . '/assets/js/storefront.js');
+        wp_enqueue_style('storefront-child-theme-css', get_stylesheet_directory_uri() . '/assets/css/storefront.css');
     }
 
     private function register_hooks()
@@ -294,6 +295,7 @@ class StorefrontChildTheme
         while ($category->parent != 0) {
             $category = get_term($category->parent);
         }
+
         if ( explode('-', $category->slug)[0]=='vendor') {
             $is_vendor = true;
         } else {
