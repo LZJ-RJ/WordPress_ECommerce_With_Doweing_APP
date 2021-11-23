@@ -77,6 +77,66 @@ body.woocommerce-account .remove.remove_from_wishlist {
     display: inline-block;
 }
 
+body.woocommerce-account .account-thumbnail {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display:inline-block;
+}
+body.woocommerce-account .account-info-name{
+    color: #424242;
+    font-size: 16px;
+    display: block;
+}
+body.woocommerce-account .account-info-text {
+    width: 77%;
+    display: inline-block;
+}
+body.woocommerce-account .woocommerce-MyAccount-content {
+    width: 71%;
+}
+body.woocommerce-account .woocommerce-MyAccount-navigation {
+    width: 22%;
+}
+
+body.woocommerce-account li.woocommerce-MyAccount-navigation-link a {
+    padding-left: 20% !important;
+}
+body.woocommerce-account li.woocommerce-MyAccount-navigation-link--orders a:before,
+body.woocommerce-account li.woocommerce-MyAccount-navigation-link--edit-account a:before,
+body.woocommerce-account li.woocommerce-MyAccount-navigation-link--edit-address a:before,
+body.woocommerce-account li.woocommerce-MyAccount-navigation-link--my-wishlist a:before{
+    content: '' !important;
+}
+body.woocommerce-account li.woocommerce-MyAccount-navigation-link--customer-logout a:before {
+    float: left;
+    margin-right: 10%;
+    margin-left: -20%;
+}
+body.woocommerce-account li.woocommerce-MyAccount-navigation-link--orders a {
+    background-image: url(/wp-content/uploads/2021/11/ic_post_add_body_normal.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 40px 40px;
+}
+body.woocommerce-account li.woocommerce-MyAccount-navigation-link--edit-account a {
+    background-image: url(/wp-content/uploads/2021/11/ic_gen_personal_set_normal.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 40px 40px;
+}
+body.woocommerce-account li.woocommerce-MyAccount-navigation-link--edit-address a {
+    background-image: url(/wp-content/uploads/2021/11/ic_shopping_address_normal.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 40px 40px;
+}
+body.woocommerce-account li.woocommerce-MyAccount-navigation-link--my-wishlist a {
+    background-image: url(/wp-content/uploads/2021/11/ic_gen_favorite_press.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 40px 40px;
+}
 @media screen and (max-width: 1024px) {
     body.woocommerce-account a.button.add_to_cart_button {
         width: 23%;
@@ -90,9 +150,17 @@ body.woocommerce-account .remove.remove_from_wishlist {
     body.woocommerce-account a.button.add_to_cart_button {
         height: 2.3em;
     }
-
     body.woocommerce-account a.button.add_to_cart_button, body.woocommerce-account .button.product_type_external {
         padding: 6%;
+    }
+
+    body.woocommerce-account li.woocommerce-MyAccount-navigation-link a {
+        padding-left: 25% !important;
+    }
+    body.woocommerce-account li.woocommerce-MyAccount-navigation-link--customer-logout a:before {
+        float: left;
+        margin-right: 7%;
+        margin-left: -27%;
     }
 }
 
@@ -101,18 +169,17 @@ body.woocommerce-account .remove.remove_from_wishlist {
         margin-bottom: 15%;
     }
 
-    body.woocommerce-account a.button.add_to_cart_button {
-        width: 35%;
-        height: 40px;
-        margin-right: 40%;
+    body.woocommerce-account .account-info-text {
+        width: 100%;
     }
-
-    body.woocommerce-account span.price {
-        width: 71%;
+    body.woocommerce-account .woocommerce-MyAccount-content {
+        width: 100%;
     }
-
-    body.woocommerce-account a.button.add_to_cart_button, body.woocommerce-account .button.product_type_external {
-        padding: 7%;
+    body.woocommerce-account .woocommerce-MyAccount-navigation {
+        width: 100%;
+    }
+    body.woocommerce-account li.woocommerce-MyAccount-navigation-link--customer-logout a:before {
+        margin-left: -31%;
     }
 }
 @media screen and (max-width: 320px) {

@@ -30,15 +30,15 @@ $user_display_name = $user->display_name;
 <nav class="woocommerce-MyAccount-navigation">
     <div class="single-pd-cat-info" href="javascript:void(0);">
         <img
-                class="single-pd-cat-thumbnail"
+                class="account-thumbnail"
                 referrerpolicy="no-referrer"
                 src="<?=$imageUrl?>"
         />
-        <div class="single-pd-cat-text">
-                  <span class="single-pd-cat-name">
+        <div class="account-info-text">
+                  <span class="account-info-name">
             <?=$user_display_name?>
             </span>
-            <span class="single-pd-cat-des">
+            <span class="account-info-email">
            <?=$user_email?>
             </span>
         </div>

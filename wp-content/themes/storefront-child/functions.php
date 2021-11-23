@@ -32,8 +32,8 @@ class StorefrontChildTheme
     private function include_backend_files()
     {
         include_once WC_ABSPATH . 'includes/wc-template-functions.php';
+        wp_enqueue_style('admin-css', get_stylesheet_directory_uri() . '/assets/css/admin.css');
     }
-
     private function include_frontend_files()
     {
         wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js');
@@ -52,7 +52,7 @@ class StorefrontChildTheme
         add_filter('woocommerce_product_tabs', [$this, 'modify_pd_tab'], 90);
         add_filter('storefront_handheld_footer_bar_links', [$this, 'modify_footer_bar'], 10, 1);
         add_action('admin_menu', [$this, 'add_menu_page']);
-        add_filter('pre_get_posts', [$this, 'posts_for_current_author']);
+//        add_filter('pre_get_posts', [$this, 'posts_for_current_author']);
         add_filter('wp_head', [$this, 'redirect_to_somewhere']);
 
         add_action( 'init', [$this, 'my_custom_endpoints'] );
@@ -62,6 +62,41 @@ class StorefrontChildTheme
         add_action( 'wp_loaded', [$this, 'my_custom_flush_rewrite_rules']);
 
         add_action( 'storefront_before_header', [$this, 'add_return_icon']);
+        add_filter( 'woocommerce_add_to_cart_validation', [$this, 'handle_is_verified'], 99, 3); //加入購物車前的驗證
+    }
+
+    public function handle_is_verified($result = true, $product_id, $quantity) {
+        global $woocommerce;
+        $product_category = wc_get_product($product_id)->get_category_ids();
+        $vendor_category_name = '';
+        foreach ($product_category as $term_id) {
+            $tmp_term = get_term($term_id, "product_cat");
+            if ($tmp_term->parent == 0 && strlen($tmp_term->slug) >= 8 && is_numeric(substr($tmp_term->slug, 7))) {
+                $vendor_category_name = $tmp_term->slug;
+            }
+        }
+
+        if ( !empty($woocommerce->cart->cart_contents) && $vendor_category_name != '' )  {
+            $old_vendor_category_name = '';
+            foreach ($woocommerce->cart->cart_contents as $item => $value) {
+                $product_category = wc_get_product($woocommerce->cart->cart_contents[$item]['product_id'])->get_category_ids();
+                foreach ($product_category as $term_id) {
+                    $tmp_term = get_term($term_id, "product_cat");
+                    if ($tmp_term->parent == 0 && strlen($tmp_term->slug) >= 8 && is_numeric(substr($tmp_term->slug, 7))) {
+                        $old_vendor_category_name = $tmp_term->slug;
+                    }
+                }
+
+               if ($old_vendor_category_name != $vendor_category_name) {
+                    wc_add_notice('請先把購物車原本的商品移除，否則無法加入，因為一次只能購買一個頻道主的商品。','notice');
+//                    unset($woocommerce->cart->cart_contents[$item]);
+                    $result = false;
+                    break;
+                }
+            }
+        }
+
+        return $result;
     }
 
     public function add_return_icon() {
@@ -135,18 +170,18 @@ class StorefrontChildTheme
         }
     }
 
-    public function posts_for_current_author($query) {
-        global $pagenow;
-
-        if( 'edit.php' != $pagenow || !$query->is_admin )
-            return $query;
-
-        if( !current_user_can( 'edit_others_posts' ) ) {
-            global $user_ID;
-            $query->set('author', $user_ID );
-        }
-        return $query;
-    }
+//    public function posts_for_current_author($query) {
+//        global $pagenow;
+//
+//        if( 'edit.php' != $pagenow || !$query->is_admin )
+//            return $query;
+//
+//        if( !current_user_can( 'edit_others_posts' ) ) {
+//            global $user_ID;
+//            $query->set('author', $user_ID );
+//        }
+//        return $query;
+//    }
 
     public function setting_doweing_category()
     {
@@ -312,6 +347,10 @@ class StorefrontChildTheme
 
         if (is_product()) {
             wp_enqueue_style('single-product-css', get_stylesheet_directory_uri() . '/assets/css/single-product.css');
+        } else if (is_cart()) {
+            wp_enqueue_style('cart-css', get_stylesheet_directory_uri() . '/assets/css/cart.css');
+        } else if (is_checkout()) {
+            wp_enqueue_style('checkout-css', get_stylesheet_directory_uri() . '/assets/css/checkout.css');
         }
     }
 

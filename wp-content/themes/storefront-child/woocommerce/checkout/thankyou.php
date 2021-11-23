@@ -22,26 +22,30 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php
 	if ( $order ) :
-
-        ?>
+    ?>
 
 		<?php if ( $order->has_status( 'failed' ) ) : ?>
-
-			<div>
-                失敗的圖
+            <div class="wc-thank-you-info">
+                <div class="wc-thank-you-img-failed"></div>
+                <div class="wc-thank-you-failed">
+                    <span>購買未成功</span>
+                </div>
+                <div class="auto-redirect-text">5秒後自動跳轉</div>
+                <div class="wc-thank-you-look-up-order">
+                    <span><a href="<?php echo wc_get_cart_url()?>">回到購物車&nbsp;→</a></span>
+                </div>
             </div>
-
 		<?php else : ?>
-        <div class="wc-thank-you-info">
-            <div class="wc-thank-you-img"></div>
-            <div>
-                <span class="wc-thank-you-successful">成功購買</span>
+            <div class="wc-thank-you-info">
+                <div class="wc-thank-you-img-successful"></div>
+                <div class="wc-thank-you-successful">
+                    <span>成功購買</span>
+                </div>
+                <div class="auto-redirect-text">5秒後自動跳轉</div>
+                <div class="wc-thank-you-look-up-order">
+                    <span><a href="<?php echo wc_get_account_endpoint_url('orders');?>">查看訂單&nbsp;→</a></span>
+                </div>
             </div>
-            <span>5秒後自動跳轉</span>
-            <div>
-                <span class="wc-thank-you-look-up-order"><a href="<?php echo wc_get_account_endpoint_url('orders');?>">查看訂單&nbsp;→</a></span>
-            </div>
-        </div>
 		<?php endif; ?>
 
 	<?php else : ?>
@@ -51,3 +55,13 @@ defined( 'ABSPATH' ) || exit;
 	<?php endif; ?>
 
 </div>
+
+<script>
+    jQuery (function ($) {
+        if ( $('body.woocommerce-page.woocommerce-checkout.woocommerce-order-received').length ) {
+            setTimeout(function() {
+                window.location.href = '<?=wc_get_account_endpoint_url('orders')?>';
+            }, 5000);
+        }
+    });
+</script>
