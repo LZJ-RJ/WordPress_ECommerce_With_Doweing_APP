@@ -22,7 +22,7 @@ jQuery(function ($) {
         } else if ($(window ).width() > 480 && $(window ).width() <= 768) {
             $('.vendor-page-store-product-pd').slick({
                 infinite: true,
-                slidesToShow: 2,
+                slidesToShow: 6,
                 rows: 1,
             });
         } else if ($(window ).width() > 320 && $(window ).width() <= 480) {

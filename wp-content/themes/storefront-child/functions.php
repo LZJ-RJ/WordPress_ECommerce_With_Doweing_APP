@@ -331,16 +331,6 @@ class StorefrontChildTheme
             $category = get_term($category->parent);
         }
 
-        if ( explode('-', $category->slug)[0]=='vendor') {
-            $is_vendor = true;
-        } else {
-            $is_vendor = false;
-        }
-        if ($is_vendor) {
-            wp_enqueue_style('vendor-css', get_stylesheet_directory_uri() . '/assets/css/vendor.css');
-            wp_enqueue_script('vendor-js', get_stylesheet_directory_uri() . '/assets/js/vendor.js');
-        }
-
         if (strpos($_SERVER['REQUEST_URI'], '/my-account/') !== false) {
             wp_enqueue_style('myaccount-css', get_stylesheet_directory_uri() . '/assets/css/myaccount.css');
         }

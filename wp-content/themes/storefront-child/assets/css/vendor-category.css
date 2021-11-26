@@ -1,5 +1,9 @@
 body.archive li.sale a.button.add_to_cart_button {
-    margin-top: -37% !important;
+    margin-top: -34% !important;
+}
+
+body.archive a.button.add_to_cart_button {
+    margin-top: -33% !important;
 }
 
 body.archive .vendor-category-sidebar {
@@ -42,12 +46,7 @@ body.archive .item-des {
 }
 
 body.archive span.price {
-    width: 70% !important;
-}
-
-body.archive a.button.add_to_cart_button {
-    width: 25% !important;
-    margin-top: -30% !important;
+    width: 70%;
 }
 
 body.archive div.woocommerce.columns-4 > ul > li.product.type-product >
@@ -115,6 +114,7 @@ body.archive #main > div.woocommerce > ul > li.product.type-product.mobile-style
 }
 body.archive #main > div.woocommerce ul.products li.product img.mobile-style-content {
     width: 15%;
+    height: 15%;
     float: left;
 }
 body.archive #main > div.woocommerce ul.products li.product .woocommerce-loop-product__title.mobile-style-content {
@@ -134,37 +134,33 @@ body.archive .sidebar-item {
     cursor: pointer;
 }
 
+@media screen and (max-width: 1024px) {
+    body.archive li.sale a.button.add_to_cart_button {
+        margin-top: -39% !important;
+    }
+
+    body.archive a.button.add_to_cart_button {
+        margin-top: -38% !important;
+    }
+}
 @media screen and (max-width: 768px) {
     body.archive a.button.add_to_cart_button {
-        width: 30% !important;
         text-align: center;
         line-height: 2;
-        margin-top: -10% !important;
+        margin-top: -16% !important;
     }
 
     body.archive li.sale span.price {
-        width: 65%;
+        width: 85%;
     }
 
     body.archive li.sale a.button.add_to_cart_button {
-        margin-top: -1% !important;
+        margin-top: -23% !important;
     }
 
     body.archive span.price {
-        font-size: 12px;
         float: left;
     }
-
-    body.archive li.sale span.price {
-        width: 65%;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    body.archive span.price {
-        font-size: 12px;
-    }
-
 }
 
 @media screen and (max-width: 480px) {
@@ -243,6 +239,10 @@ body.archive .sidebar-item {
     body.archive .sidebar-item{
         border-bottom: #BDBDBD 1px solid;
     }
+
+    ul.products li.product:nth-child(odd) {
+        margin-left: 0;
+    }
 }
 
 @media screen and (max-width: 320px) {
@@ -260,5 +260,8 @@ body.archive .sidebar-item {
 
     body.archive .child-term-href {
         margin-right: 2% !important;
+    }
+    body.archive .order-list {
+        width: 90% !important;
     }
 }

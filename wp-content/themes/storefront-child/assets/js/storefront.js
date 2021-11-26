@@ -145,9 +145,60 @@ jQuery(function($){
             $('.single-product .woocommerce-Tabs-panel.woocommerce-Tabs-panel--reviews.panel.entry-content.wc-tab').remove();
             $(tmpReviewHtml).insertBefore($('.single-product section.related.products'));
         }
+
+
+        $.each($('body.archive.other-archive-product li.product'), function (key ,value) {
+            if ($(value).find('a span.price span.woocommerce-Price-amount.amount').length == 1) {
+                $(value).find('a span.price').css('line-height', 3.5);
+
+                if ( $(window).width() > 1024) {
+                    $(value).find('a.button.add_to_cart_button').css('cssText', 'margin-top: -47% !important;');
+                } else if ($(window ).width() > 768 && $(window).width() <= 1024) {
+                    $(value).find('a.button.add_to_cart_button').css('cssText', 'margin-top: -55% !important;');
+                } else if ($(window ).width() <= 480) {
+                    $(value).find('a.button.add_to_cart_button').css('cssText', 'margin-top: 10px !important;');
+                }
+            } else {
+                $(value).find('a span.price').css('line-height', 1.3);
+            }
+        })
+
+        $.each($('body.archive div.store-product-single-pd-cat-info'), function (key ,value) {
+            if ($(value).find('span.price span.woocommerce-Price-amount.amount').length == 1) {
+                $(value).find('span.price').css('line-height', 3.5);
+
+                if ( $(window).width() > 1024) {
+                    $(value).find('a.button.add_to_cart_button').css('cssText', 'margin-top: 4% !important;');
+                } else if ($(window ).width() > 768 && $(window).width() <= 1024) {
+                    $(value).find('a.button.add_to_cart_button').css('cssText', 'margin-top: 5% !important;');
+                } else if ($(window ).width() <= 320) {
+                    $(value).find('a.button.add_to_cart_button').css('cssText', 'margin-top: 6px !important;');
+                }
+            } else {
+                $(value).find('span.price').css('line-height', 1.3);
+            }
+        })
+
+        $.each($('body.archive.other-vendor li.product'), function (key ,value) {
+            if ($(value).find('a span.price span.woocommerce-Price-amount.amount').length == 1) {
+                $(value).find('a span.price').css('line-height', 3.5);
+
+                if ( $(window).width() > 1024) {
+                    $(value).find('a.button.add_to_cart_button').css('cssText', 'margin-top: -47% !important;');
+                } else if ($(window ).width() > 768 && $(window).width() <= 1024) {
+                    $(value).find('a.button.add_to_cart_button').css('cssText', 'margin-top: -55% !important;');
+                } else if ($(window ).width() <= 480) {
+                    $(value).find('a.button.add_to_cart_button').css('cssText', 'margin-top: 10px !important;');
+                }
+            } else {
+                $(value).find('a span.price').css('line-height', 1.3);
+            }
+        })
+
     }
 
     $('body form.woocommerce-product-search').attr('action', location.origin + location.pathname);
     $('body form.woocommerce-product-search input[name="post_type"]').remove();
     $('body form.search-form').remove();
+
 })

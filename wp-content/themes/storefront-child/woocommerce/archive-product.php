@@ -45,6 +45,11 @@ if ( explode('-', $parent->slug)[0] == 'vendor') {
     $is_vendor = false;
 }
 
+if ($is_vendor) {
+    echo '<script src="' . get_stylesheet_directory_uri() . '/assets/js/vendor.js"></script>';
+    echo '<link rel="stylesheet" href="/wp-content/themes/storefront-child/assets/css/vendor.css" media="all">';
+}
+
 // Redirect
 $divide_by_slash = explode('/', $_SERVER['REQUEST_URI']);
 $is_search = false;
@@ -180,12 +185,22 @@ if (!$is_search):
                 echo '<link rel="stylesheet" href="/wp-content/themes/storefront-child/assets/css/other-vendor.css" media="all">';
                 include_once ABSPATH . 'wp-content/themes/storefront-child/vendor-product.php';
         }
-    } else {
+    } else if (sizeof(explode('/', $_SERVER['REQUEST_URI'])) <= 4) {
+        # Homepage-Child
         $body_class = 'other-archive-product';
         echo '<link rel="stylesheet" href="/wp-content/themes/storefront-child/assets/css/other-archive-product.css" media="all">';
         include_once ABSPATH . 'wp-content/themes/storefront-child/other-archive-product.php';
+    } else {
+        ?>
+        <script>
+            jQuery(function($){
+                alert('無效頁面!即將回到首頁...');
+                window.location = location.origin;
+            })
+        </script>
+        <?php
+//        header("Location: " . home_url());
     }
-
     ?>
         <script>
             jQuery(function($){

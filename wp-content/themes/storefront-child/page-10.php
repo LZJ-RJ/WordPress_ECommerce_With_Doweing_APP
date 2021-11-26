@@ -25,7 +25,7 @@ $terms = get_terms(array(
                         referrerpolicy="no-referrer"
                         src="<?= $imageUrl ?>"
                 />
-                <span><?= $term->name ?></span>
+                <p><?= $term->name ?></p>
             </a>
             <?php
         }
@@ -54,7 +54,7 @@ $hot_channel_terms = unserialize(get_option('doweing_hot_channel'));
                             referrerpolicy="no-referrer"
                             src="<?= $imageUrl ?>"
                     />
-                    <span><?= $tmp_term->name ?></span>
+                    <p><?= $tmp_term->name ?></p>
                 </a>
                 <?php
             }
@@ -79,9 +79,9 @@ if (count($hot_products) > 7) {
     <div class="home-page-hot-product">
         <div class="header">
             <h3>熱門商品</h3>
-            <span>
+            <p>
                 <?= ($is_more) ? '<a href="' . $more_link . '">更多</a>' : '' ?>
-            </span>
+            </p>
         </div>
         <div class="home-page-hot-product-pd">
             <?php
@@ -96,7 +96,7 @@ if (count($hot_products) > 7) {
                             referrerpolicy="no-referrer"
                             src="<?= $imageUrl ?>"
                     />
-                    <span><?= $product->get_name() ?></span>
+                    <p><?= $product->get_name() ?></p>
                 </a>
                 <?php
             }
@@ -126,7 +126,7 @@ $doweing_category = unserialize(get_option('doweing_category'));
                             referrerpolicy="no-referrer"
                             src="<?= $imageUrl ?>"
                     />
-                    <span><?= $tmp_term->name ?></span>
+                    <p><?= $tmp_term->name ?></p>
                 </a>
                 <?php
             }
@@ -151,9 +151,9 @@ if (count($recommend_products) > 14) {
     <div class="home-page-recommend-product">
         <div class="header">
             <h3>推薦商品</h3>
-            <span>
+            <p>
                 <?= ($is_more) ? '<a href="' . $more_link . '">更多</a>' : '' ?>
-            </span>
+            </p>
         </div>
         <div class="home-page-recommend-product-pd">
             <?php
@@ -168,7 +168,7 @@ if (count($recommend_products) > 14) {
                             referrerpolicy="no-referrer"
                             src="<?= $imageUrl ?>"
                     />
-                    <span><?= $product->get_name() ?></span>
+                    <p><?= $product->get_name() ?></p>
                 </a>
                 <?php
             }

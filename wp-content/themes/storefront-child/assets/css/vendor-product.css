@@ -1,9 +1,9 @@
 body.archive a.button.add_to_cart_button {
-    margin-top: -30% !important;
+    margin-top: -37% !important;
 }
 
 body.archive li.sale a.button.add_to_cart_button {
-    margin-top: -46% !important;
+    margin-top: -38% !important;
 }
 
 body.archive div > ul > li.product.type-product a.woocommerce-LoopProduct-link.woocommerce-loop-product__link > div {
@@ -24,7 +24,7 @@ body.archive #main > div form > select {
 }
 
 body.archive #orderby {
-    margin-top: -6%;
+    margin-top: -7.7%;
     color: #9E9E9E;
 }
 
@@ -40,6 +40,19 @@ body.archive #main > div > ul > li.product.type-product.status-publish a.woocomm
     display: none;
 }
 
+@media screen and (max-width: 1024px) {
+    body.archive div.child-term-tab {
+        width: 93%;
+    }
+
+    body.archive #orderby {
+        margin-top: -8.2%;
+    }
+    body.archive a.button.add_to_cart_button {
+        margin-top: -40% !important;
+    }
+}
+
 @media screen and (min-width: 768px) {
     body.archive #main > h3 {
         display: none;
@@ -52,7 +65,6 @@ body.archive #main > div > ul > li.product.type-product.status-publish a.woocomm
     }
 
     body.archive a.button.add_to_cart_button {
-        width: 35% !important;
         text-align: center;
         line-height: 2;
     }
@@ -62,17 +74,16 @@ body.archive #main > div > ul > li.product.type-product.status-publish a.woocomm
     }
 
     body.archive a.button.add_to_cart_button {
-        margin-top: -46% !important;
+        margin-top: -15% !important;
     }
 
     body.archive li.sale a.button.add_to_cart_button {
-        margin-top: -61% !important;
+        margin-top: -25% !important;
     }
 
     body.archive span.price {
-        font-size: 12px;
         float: left;
-        width: 65% !important;
+        width: 85% !important;
     }
     body.archive li.sale span.price {
         width: 65%;
@@ -83,11 +94,11 @@ body.archive #main > div > ul > li.product.type-product.status-publish a.woocomm
     }
 
     body.archive div.child-term-tab {
-        width: 75% !important;
+        width: 70% !important;
     }
 
     body.archive #orderby {
-        margin-top: -7%;
+        margin-top: -10%;
     }
 }
 
@@ -113,35 +124,27 @@ body.archive #main > div > ul > li.product.type-product.status-publish a.woocomm
     }
 
     body.archive span.price {
-        font-size: 20px;
-        text-align: center;
         margin: 0;
         margin-left: 10%;
         width: 60%;
     }
 
     body.archive a.button.add_to_cart_button {
-        margin-top: -1% !important;
+        margin-top: -26% !important;
         margin-right: 5% !important;
-        width: 20%!important;
-        height: 38px !important;
         line-height: 1;
     }
 
     body.archive li.sale a.button.add_to_cart_button {
-        margin-top: 10% !important;
+        margin-top: -27% !important;
     }
 
     body.archive span.price ins {
         display: block;
     }
 
-    body.archive h2.woocommerce-loop-product__title {
-        font-size: 20px !important;
-    }
-
     body.archive #orderby {
-        margin-top: -3%;
+        margin-top: -1%;
         float: left !important;
         width: 96%;
         margin-left: 1%;
@@ -150,17 +153,13 @@ body.archive #main > div > ul > li.product.type-product.status-publish a.woocomm
     body.archive div.child-term-tab {
         width: 96% !important;
     }
+
+    body.archive > div ul.products > li.product.type-product > a.woocommerce-LoopProduct-link.woocommerce-loop-product__link > img {
+        width: 154px;
+    }
 }
 
 @media screen and (max-width: 320px) {
-    body.archive span.price {
-        font-size: 15px;
-    }
-
-    body.archive h2.woocommerce-loop-product__title {
-        font-size: 15px !important;
-    }
-
     #masthead div.site-title {
         margin-left: 53%;
     }
@@ -168,14 +167,12 @@ body.archive #main > div > ul > li.product.type-product.status-publish a.woocomm
     body.archive a.button.add_to_cart_button {
         margin-top: -40% !important;
         margin-right: 0 !important;
-        width: 30% !important;
-        height: 40px !important;
         line-height: 1.7;
         float: right !important;
     }
 
     body.archive li.sale a.button.add_to_cart_button {
-        margin-top: -60% !important;
+        margin-top: -42% !important;
         margin-right: -4%!important;
     }
 

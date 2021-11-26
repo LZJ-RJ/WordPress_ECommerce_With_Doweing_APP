@@ -2,19 +2,16 @@ body.archive #orderby,
 body.archive ul.products li.product .star-rating {
     display: none;
 }
+
 @media screen and (max-width: 768px) {
     body.archive a.button.add_to_cart_button {
         float: right !important;
-        margin-top: 12% !important;
-        width: 23% !important;
-        height: 1.5em !important;
     }
-    body.archive span.price {
-        float: left !important;
-        width: 75% !important;
-        font-size: 12px;
+    body.archive a.button.add_to_cart_button {
+        margin-top: -20px !important;
     }
 }
+
 @media screen and (max-width: 480px) {
     ul.products li.product .woocommerce-loop-product__title {
         font-size: 20px;
@@ -23,12 +20,9 @@ body.archive ul.products li.product .star-rating {
         font-size: 18px;
     }
     body.archive a.button.add_to_cart_button {
-        width: 25% !important;
-        height: 35px !important;
         margin-top: 4%!important;
     }
 }
-
 
 @media screen and (max-width: 320px) {
     ul.products li.product .woocommerce-loop-product__title {

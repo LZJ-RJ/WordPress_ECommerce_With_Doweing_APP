@@ -1,60 +1,64 @@
+body.archive.vendor-store div.vendor-page-store-product-pd.slick-slider > div > div
+> div.store-product-single-pd-cat-info.slick-slide > a > img {
+    width: 138px;
+    height: 118px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+body.archive.vendor-store div.vendor-page-store-product-pd.slick-slider > div > div
+> div.store-product-single-pd-cat-info.slick-slide > a span {
+    color: #757575;
+    font-size: 16px;
+    text-align: center;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
 body.archive a.button.add_to_cart_button {
-    margin-top: 0 !important;
+    margin-top: 8px !important;
 }
 
 @media screen and (max-width: 768px) {
-    body.archive a.button.add_to_cart_button {
-        width: 20% !important;
-    }
-
     body.archive span.price {
-        width: 60% !important;
-        font-size: 20px;
+        width: 50% !important;
     }
 
     body.archive #main div.vendor-page-store-product-pd.slick-slider
     > div > div > div.store-product-single-pd-cat-info.slick-slide a span {
-        display: block;
         margin-top: 11%;
-        font-size: 25px;
-    }
-
-    body.archive a.button.add_to_cart_button {
-        width: 15% !important;
     }
 
     body.archive #main div div.vendor-page-store-product-pd.slick-slider > div > div
     > div.store-product-single-pd-cat-info.slick-slide > span > del {
         display: block;
     }
-}
 
-@media screen and (max-width: 480px) {
-    body.archive a.button.add_to_cart_button {
-        width: 20%;
-        height: 30px!important;
+    body.archive.vendor-store div.vendor-page-store-product-pd.slick-slider > div > div
+    > div.store-product-single-pd-cat-info.slick-slide > a > img {
+        width: 121px;
     }
 
-    body.archive #main div.vendor-page-store-product-pd.slick-slider
-    > div > div > div.store-product-single-pd-cat-info.slick-slide a span {
-        font-size: 20px;
-    }
     body.archive span.price {
-        font-size: 15px;
+        float: left !important;
+        width: 75% !important;
     }
 }
 
 @media screen and (max-width: 320px) {
     body.archive a.button.add_to_cart_button {
-        width: 30%!important;
         float: right;
     }
 
-    body.archive #main div.vendor-page-store-product-pd.slick-slider
-    > div > div > div.store-product-single-pd-cat-info.slick-slide a span {
-        font-size: 15px;
+    body.archive a.button.add_to_cart_button {
+        margin-top: 30px !important;
     }
     body.archive span.price {
-        font-size: 10px;
+        width: 70% !important;
     }
 }
