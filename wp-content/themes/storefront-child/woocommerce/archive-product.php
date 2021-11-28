@@ -185,7 +185,10 @@ if (!$is_search):
                 echo '<link rel="stylesheet" href="/wp-content/themes/storefront-child/assets/css/other-vendor.css" media="all">';
                 include_once ABSPATH . 'wp-content/themes/storefront-child/vendor-product.php';
         }
-    } else if (sizeof(explode('/', $_SERVER['REQUEST_URI'])) <= 4) {
+    } else if (
+        ( sizeof(explode('/', $_SERVER['REQUEST_URI'])) <= 4 ) ||
+        ( in_array('doweing-special-plan', explode('/', $_SERVER['REQUEST_URI'])) )
+    ) {
         # Homepage-Child
         $body_class = 'other-archive-product';
         echo '<link rel="stylesheet" href="/wp-content/themes/storefront-child/assets/css/other-archive-product.css" media="all">';

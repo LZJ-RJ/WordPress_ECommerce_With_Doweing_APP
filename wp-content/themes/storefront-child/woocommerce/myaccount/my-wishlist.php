@@ -18,31 +18,31 @@ $results = $wpdb->get_results($sql);
     <div class="vendor-page-wishlist-product-pd">
         <?php
         foreach ($results as $item) {
-        $product = wc_get_product($item->prod_id);
-        $thumbnail_id = $product->get_image_id();
-        $imageUrl = wp_get_attachment_url($thumbnail_id);
-        $link = get_permalink($product->get_id());
-        ?>
-        <div class="wishlist-product-single-pd-cat-info">
-            <a href="<?= $link ?>">
-                <img
-                    class="wishlist-product-single-pd-cat-thumbnail"
-                    referrerpolicy="no-referrer"
-                    src="<?= $imageUrl ?>"
-                />
-                <span><?= $product->get_name() ?><a href="'.esc_url( add_query_arg( 'remove_from_wishlist', $product->get_id() ) ).'" class="remove remove_from_wishlist" title="'.esc_html( apply_filters( 'yith_wcwl_remove_product_wishlist_message_title', __( 'Remove this product', 'yith-woocommerce-wishlist' ) ) ).'">&times;</a></span>
-            </a>
-            <?php
-            if ($price_html = $product->get_price_html()) {
-                echo '<span class="price">' . $price_html . '</span>';
-            }
+            $product = wc_get_product($item->prod_id);
+            $thumbnail_id = $product->get_image_id();
+            $imageUrl = wp_get_attachment_url($thumbnail_id);
+            $link = get_permalink($product->get_id());
+            ?>
+            <div class="wishlist-product-single-pd-cat-info">
+                <a href="<?= $link ?>">
+                    <img
+                        class="wishlist-product-single-pd-cat-thumbnail"
+                        referrerpolicy="no-referrer"
+                        src="<?= $imageUrl ?>"
+                    />
+                    <span><?= $product->get_name() ?><a href="<?php echo esc_url( add_query_arg( 'remove_from_wishlist', $product->get_id() ) );?>" class="remove remove_from_wishlist" title="<?php echo esc_html( apply_filters( 'yith_wcwl_remove_product_wishlist_message_title', __( 'Remove this product', 'yith-woocommerce-wishlist' ) ) );?>">&times;</a></span>
+                </a>
+                <?php
+                if ($price_html = $product->get_price_html()) {
+                    echo '<span class="price">' . $price_html . '</span>';
+                }
 
             add_to_cart($product);
             echo '</div>';
-            }
+        }
             ?>
-        </div>
     </div>
+</div>
     <?php
 
 function add_to_cart($product)

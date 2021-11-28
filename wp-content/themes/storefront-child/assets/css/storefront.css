@@ -3,3 +3,17 @@ body #main .error-404.not-found > div > h3 {
     font-weight: bold;
     margin-top: 2%;
 }
+
+.global-page-return {
+    background-image: url(/wp-content/uploads/2021/11/ic_basic_arrow_left_normal@3x.png);
+    float:left;
+    color:#BDBDBD;
+    margin-top: 8%;
+    margin-left: 10%;
+}
+
+@media screen and (max-width: 320px) {
+    .global-page-return {
+        margin-top: 12%;
+    }
+}

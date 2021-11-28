@@ -543,7 +543,7 @@ class WC_Countries {
 					'SI'      => "{company}\n{name}\n{address_1}\n{address_2}\n{postcode} {city}\n{country}",
 					'SK'      => "{company}\n{name}\n{address_1}\n{address_2}\n{postcode} {city}\n{country}",
 					'TR'      => "{name}\n{company}\n{address_1}\n{address_2}\n{postcode} {city} {state}\n{country}",
-					'TW'      => "{last_name} {first_name} {company}\n{postcode} {country} {state} {city} {address_1} {address_2}\n",
+					'TW'      => "{first_name}{last_name}\n{company}\n{postcode} {country} {state} {city}\n{address_1}\n{address_2}\n",
 					'UG'      => "{name}\n{company}\n{address_1}\n{address_2}\n{city}\n{state}, {country}",
 					'US'      => "{name}\n{company}\n{address_1}\n{address_2}\n{city}, {state_code} {postcode}\n{country}",
 					'VN'      => "{name}\n{company}\n{address_1}\n{city}\n{country}",
@@ -637,6 +637,10 @@ class WC_Countries {
 				$args
 			)
 		);
+
+		$replace['{first_name}'] = '<b>'.$replace['{first_name}'].'</b>';
+		$replace['{last_name}'] = '<b>'.$replace['{last_name}'].'</b>';
+		$replace['{company}'] = '<b>'.$replace['{company}'].'</b>';
 
 		$formatted_address = str_replace( array_keys( $replace ), $replace, $format );
 

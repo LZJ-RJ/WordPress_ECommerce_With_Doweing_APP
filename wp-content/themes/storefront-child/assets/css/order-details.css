@@ -1,0 +1,156 @@
+.account-order-detail-header .order-number {
+    display: inline-block;
+}
+.account-order-detail-header .order-number-title {
+    color: #757575;
+    font-size: 14px;
+}
+.account-order-detail-header .order-number-content {
+    color: #BDBDBD;
+    font-size: 14px;
+}
+.account-order-detail-header .order-created-date {
+    color: #BDBDBD;
+    font-size: 14px;
+    display: inline-block;
+    float: right;
+}
+
+.account-order-detail-main-1 .order-status-title {
+    color: #424242;
+    border-bottom: #EEEEEE 0.5px solid;
+    margin-top: 3%;
+    font-weight: bold;
+    padding-left: 4%;
+}
+.account-order-detail-main-1 .order-status-content {
+    margin-top: 5%;
+    margin-bottom: 15%;
+    padding-left: 4%;
+}
+
+.account-order-detail-main-1 .woocommerce-customer-details .woocommerce-column--billing-address address {
+    border: 1px solid #EEEEEE;
+    padding: 6%;
+}
+.account-order-detail-main-1 .woocommerce-customer-details .woocommerce-column--billing-address,
+.account-order-detail-main-1 .woocommerce-customer-details .woocommerce-column--shipping-address {
+    width: 100% !important;
+}
+.account-order-detail-main-1 .woocommerce-customer-details .woocommerce-column--shipping-address address {
+    border: 1px solid #EEEEEE;
+    padding: 6%;
+}
+.account-order-detail-main-1 {
+    width: 35%;
+}
+.account-order-detail-main-2 {
+    width: 58%;
+    float: right;
+    margin-top: -11%;
+}
+
+div.entry-content div.account-order-detail-main-1 > section > section div.woocommerce-column--billing-address.col-1 > h2 {
+    font-size: 16px;
+    border-bottom: #EEEEEE 0.5px solid;
+    padding-left: 4%;
+}
+div.entry-content div.account-order-detail-main-1 > section > section div.woocommerce-column--shipping-address.col-2 > h2 {
+    font-size: 16px;
+    border-bottom: #EEEEEE 0.5px solid;
+    padding-left: 4%;
+}
+
+.account-order-detail-main-1 .woocommerce-customer-details--phone,
+.account-order-detail-main-1 .woocommerce-customer-details--email {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow-y: hidden;
+    white-space: normal;
+}
+
+.account-order-detail-main-3 {
+    width: 100%;
+    float: left;
+}
+.account-order-detail-main-3 h3 {
+    padding-left: 4%;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: #EEEEEE 0.5px solid;
+    margin-bottom: 5%;
+}
+.account-order-detail-main-3 .order-detail-item {
+    padding-left: 4%;
+}
+
+.account-order-detail-main-3 .order-detail-item-main img {
+    width: 68px;
+    height: 68px;
+    display: inline-block;
+    float: left;
+}
+.account-order-detail-main-3 .order-detail-item-main .item {
+    display: inline-block;
+    margin-left: 3%;
+    width: 80%;
+}
+
+.account-order-detail-main-3 .order-detail-item-main .item .item-name {
+    color: #212121;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow-y: hidden;
+    white-space: normal;
+}
+
+.account-order-detail-main-3 .order-detail-item-main .item .item-price {
+    color: #EB6C00;
+    font-weight: bold;
+}
+.account-order-detail-main-3 .order-detail-item-amount {
+    margin-top: 5%;
+}
+.account-order-detail-main-3 .order-detail-item-amount .item-amount-title {
+    display: inline-block;
+    margin-left: 1%;
+    color: #757575;
+}
+.account-order-detail-main-3 .order-detail-item-amount .item-amount-number {
+    display: inline-block;
+    color: #2196F3;
+    margin-left: 7%;
+}
+
+@media screen and (max-width: 768px) {
+    .account-order-detail-main-3 .order-detail-item-amount .item-amount-number {
+        margin-left: 9%;
+    }
+}
+@media screen and (max-width: 480px) {
+    .account-order-detail-main-1 {
+        width :100%;
+    }
+    .account-order-detail-main-2 {
+        width :100%;
+        margin-top: 7%;
+    }
+    .account-order-detail-main-3 .order-detail-item-amount .item-amount-number {
+        margin-left: 10%;
+    }
+}
+@media screen and (max-width: 320px) {
+    .account-order-detail-main-3 .order-detail-item-main .item {
+        width: 70%;
+    }
+    .account-order-detail-main-3 .order-detail-item-amount {
+        margin-top: 10%;
+    }
+    .account-order-detail-main-3 .order-detail-item-amount .item-amount-number {
+        margin-left: 15%;
+    }
+}

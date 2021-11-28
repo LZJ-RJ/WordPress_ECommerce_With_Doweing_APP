@@ -733,13 +733,6 @@ footer#colophon > div > div.storefront-handheld-footer-bar > ul > li.my-account 
         height: 310px;
     }
 
-    #masthead div.site-title  {
-        background-image: url(/wp-content/uploads/2021/09/icon-doweing-logo3@2x.png);
-        width: 100px;
-        height: 100px;
-        margin-left: 80%;
-    }
-
     #masthead div.col-full > div.site-branding {
         margin-bottom: -80px;
     }
