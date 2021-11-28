@@ -49,7 +49,10 @@ $order_created_date = $order->get_date_created()->date( 'Y-m-d' );
         <div class="order-number-title">訂單編號</div>
         <div class="order-number-content"><?=$order_number?></div>
     </div>
-    <div class="order-created-date">發布日期 <?=$order_created_date?></div>
+    <div class="order-created-date">
+        <div class="date-title">發布日期</div>
+        <div class="date-content"><?=$order_created_date?></div>
+    </div>
 </div>
 <div class="account-order-detail-main-1">
 

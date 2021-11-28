@@ -36,10 +36,13 @@ class StorefrontChildTheme
     }
     private function include_frontend_files()
     {
-        wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js?version=20211127');
-        wp_enqueue_script('storefront-child-theme-js', get_stylesheet_directory_uri() . '/assets/js/storefront.js?version=20211127');
-        wp_enqueue_style('storefront-child-theme-css', get_stylesheet_directory_uri() . '/assets/css/storefront.css?version=20211127');
-    }
+        $is_admin_page = is_admin();
+        if (!$is_admin_page) {
+            wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js?version=20211127');
+            wp_enqueue_script('storefront-child-theme-js', get_stylesheet_directory_uri() . '/assets/js/storefront.js?version=20211127');
+            wp_enqueue_style('storefront-child-theme-css', get_stylesheet_directory_uri() . '/assets/css/storefront.css?version=20211127');
+        }
+     }
 
     private function register_hooks()
     {
@@ -52,7 +55,6 @@ class StorefrontChildTheme
         add_filter('woocommerce_product_tabs', [$this, 'modify_pd_tab'], 90);
         add_filter('storefront_handheld_footer_bar_links', [$this, 'modify_footer_bar'], 10, 1);
         add_action('admin_menu', [$this, 'add_menu_page']);
-//        add_filter('pre_get_posts', [$this, 'posts_for_current_author']);
         add_filter('wp_head', [$this, 'redirect_to_somewhere']);
 
         add_action( 'init', [$this, 'my_custom_endpoints'] );
@@ -64,6 +66,27 @@ class StorefrontChildTheme
         add_action( 'storefront_before_header', [$this, 'add_return_icon']);
         add_filter( 'woocommerce_add_to_cart_validation', [$this, 'handle_is_verified'], 99, 3); //加入購物車前的驗證
         add_filter( 'woocommerce_my_account_my_orders_query', [$this, 'add_url_query_status'], 999, 1);
+
+        add_action('create_product_cat', [$this, 'add_author'], 10, 1);
+        add_filter('pre_get_posts', [$this, 'posts_for_current_author']);
+   }
+
+   public function add_author($taxonomy_id) {
+        add_term_meta($taxonomy_id, '_author_id', wp_get_current_user()->ID);
+   }
+
+    public function posts_for_current_author($query) {
+        $user = wp_get_current_user();
+        $is_admin_page = is_admin();
+        if ( !in_array( 'admin', (array) $user->roles ) &&
+            $is_admin_page
+        ) {
+            if( !current_user_can( 'edit_others_posts' ) ) {
+                $query->set('author', $user->ID );
+
+            }
+            return $query;
+        }
     }
 
     public function add_url_query_status($args) {
@@ -160,19 +183,6 @@ class StorefrontChildTheme
             header("Location: ".home_url()."/my-account/orders/");
         }
     }
-
-//    public function posts_for_current_author($query) {
-//        global $pagenow;
-//
-//        if( 'edit.php' != $pagenow || !$query->is_admin )
-//            return $query;
-//
-//        if( !current_user_can( 'edit_others_posts' ) ) {
-//            global $user_ID;
-//            $query->set('author', $user_ID );
-//        }
-//        return $query;
-//    }
 
     public function setting_doweing_category()
     {

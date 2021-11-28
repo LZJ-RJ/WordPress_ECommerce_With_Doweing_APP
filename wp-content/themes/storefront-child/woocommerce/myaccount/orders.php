@@ -26,10 +26,10 @@ if ($_GET['status']) {
 } else {
     $query_status = ['on-hold', 'pending'];
 }
-$pending_orders = sizeof(wc_get_orders(['limit' => -1, 'status' => ['on-hold', 'pending']]));
-$processing_orders = sizeof(wc_get_orders(['limit' => -1, 'status' => ['processing']]));
-$completed_orders = sizeof(wc_get_orders(['limit' => -1, 'status' => ['completed']]));
-$refunded_orders = sizeof(wc_get_orders(['limit' => -1, 'status' => ['refunded']]));
+$pending_orders = sizeof(wc_get_orders(['customer' => get_current_user_id(), 'limit' => -1, 'status' => ['on-hold', 'pending']]));
+$processing_orders = sizeof(wc_get_orders(['customer' => get_current_user_id(), 'limit' => -1, 'status' => ['processing']]));
+$completed_orders = sizeof(wc_get_orders(['customer' => get_current_user_id(), 'limit' => -1, 'status' => ['completed']]));
+$refunded_orders = sizeof(wc_get_orders(['customer' => get_current_user_id(), 'limit' => -1, 'status' => ['refunded']]));
 ?>
 <div class="account-order-status-list">
     <a class="account-order-list-tab <?=$query_status == ['on-hold', 'pending']?'selected':''?>" href="<?=wc_get_account_endpoint_url('orders')?>?status=pending">等待付款<?=$pending_orders>0?'('.$pending_orders.')':''?></a>

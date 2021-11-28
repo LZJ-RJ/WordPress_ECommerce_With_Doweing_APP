@@ -638,9 +638,11 @@ class WC_Countries {
 			)
 		);
 
-		$replace['{first_name}'] = '<b>'.$replace['{first_name}'].'</b>';
-		$replace['{last_name}'] = '<b>'.$replace['{last_name}'].'</b>';
-		$replace['{company}'] = '<b>'.$replace['{company}'].'</b>';
+		if (is_account_page()) {
+            $replace['{first_name}'] = '<b>'.$replace['{first_name}'].'</b>';
+            $replace['{last_name}'] = '<b>'.$replace['{last_name}'].'</b>';
+            $replace['{company}'] = '<b>'.$replace['{company}'].'</b>';
+        }
 
 		$formatted_address = str_replace( array_keys( $replace ), $replace, $format );
 

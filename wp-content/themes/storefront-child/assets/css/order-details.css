@@ -125,7 +125,14 @@ div.entry-content div.account-order-detail-main-1 > section > section div.woocom
     color: #2196F3;
     margin-left: 7%;
 }
+.account-order-detail-header .order-created-date .date-title {
+    font-weight: bold;
+    display: inline-block;
+}
 
+.account-order-detail-header .order-created-date .date-content {
+    display: inline-block;
+}
 @media screen and (max-width: 768px) {
     .account-order-detail-main-3 .order-detail-item-amount .item-amount-number {
         margin-left: 9%;
@@ -141,6 +148,14 @@ div.entry-content div.account-order-detail-main-1 > section > section div.woocom
     }
     .account-order-detail-main-3 .order-detail-item-amount .item-amount-number {
         margin-left: 10%;
+    }
+    .account-order-detail-header .order-created-date .date-title {
+        color: #757575;
+    }
+    .account-order-detail-header .order-created-date {
+        display: block;
+        width: 100%;
+        margin-bottom: 5%;
     }
 }
 @media screen and (max-width: 320px) {
