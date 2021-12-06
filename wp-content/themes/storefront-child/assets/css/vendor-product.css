@@ -1,9 +1,8 @@
-body.archive a.button.add_to_cart_button {
-    margin-top: -37% !important;
-}
-
 body.archive li.sale a.button.add_to_cart_button {
-    margin-top: -38% !important;
+    margin-top: -39% !important;
+}
+body.archive a.button.add_to_cart_button {
+    margin-top: -45% !important;
 }
 
 body.archive div > ul > li.product.type-product a.woocommerce-LoopProduct-link.woocommerce-loop-product__link > div {
@@ -39,7 +38,9 @@ body.archive #main > h3 {
 body.archive #main > div > ul > li.product.type-product.status-publish a.woocommerce-LoopProduct-link.woocommerce-loop-product__link > span.onsale {
     display: none;
 }
-
+body.archive > div ul.products > li.product.type-product > a.woocommerce-LoopProduct-link.woocommerce-loop-product__link > h2 {
+    height: 29pt;
+}
 @media screen and (max-width: 1024px) {
     body.archive div.child-term-tab {
         width: 93%;
@@ -50,6 +51,9 @@ body.archive #main > div > ul > li.product.type-product.status-publish a.woocomm
     }
     body.archive a.button.add_to_cart_button {
         margin-top: -40% !important;
+    }
+    body.archive li.sale a.button.add_to_cart_button {
+        margin-top: -44% !important;
     }
 }
 
@@ -103,6 +107,10 @@ body.archive #main > div > ul > li.product.type-product.status-publish a.woocomm
 }
 
 @media screen and (max-width: 480px) {
+    #masthead div.site-title {
+        margin-left: 20%;
+    }
+
     body.archive #masthead {
         height: 80px !important;
     }
@@ -119,10 +127,6 @@ body.archive #main > div > ul > li.product.type-product.status-publish a.woocomm
         margin-right: 6%;
     }
 
-    #masthead div.site-title {
-        margin-left: 86%;
-    }
-
     body.archive span.price {
         margin: 0;
         margin-left: 10%;
@@ -130,13 +134,13 @@ body.archive #main > div > ul > li.product.type-product.status-publish a.woocomm
     }
 
     body.archive a.button.add_to_cart_button {
-        margin-top: -26% !important;
+        margin-top: -37% !important;
         margin-right: 5% !important;
         line-height: 1;
     }
 
     body.archive li.sale a.button.add_to_cart_button {
-        margin-top: -27% !important;
+        margin-top: -26% !important;
     }
 
     body.archive span.price ins {
@@ -148,22 +152,30 @@ body.archive #main > div > ul > li.product.type-product.status-publish a.woocomm
         float: left !important;
         width: 96%;
         margin-left: 1%;
+        margin-bottom: 3%;
     }
 
     body.archive div.child-term-tab {
         width: 96% !important;
+        height: 35pt;
     }
 
     body.archive > div ul.products > li.product.type-product > a.woocommerce-LoopProduct-link.woocommerce-loop-product__link > img {
         width: 154px;
     }
+
+    body.archive span.price {
+        width: 70% !important;
+    }
+}
+
+@media screen and (max-width: 391px) {
+    body.archive li.sale a.button.add_to_cart_button {
+        margin-top: -31% !important;
+    }
 }
 
 @media screen and (max-width: 320px) {
-    #masthead div.site-title {
-        margin-left: 53%;
-    }
-
     body.archive a.button.add_to_cart_button {
         margin-top: -40% !important;
         margin-right: 0 !important;
@@ -172,7 +184,7 @@ body.archive #main > div > ul > li.product.type-product.status-publish a.woocomm
     }
 
     body.archive li.sale a.button.add_to_cart_button {
-        margin-top: -42% !important;
+        margin-top: -40% !important;
         margin-right: -4%!important;
     }
 
@@ -180,5 +192,7 @@ body.archive #main > div > ul > li.product.type-product.status-publish a.woocomm
         margin-top: -6%;
         margin-bottom: 6%;
     }
-
+    body.archive #masthead div.site-title {
+        margin-left: 15%;
+    }
 }

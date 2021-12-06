@@ -152,27 +152,30 @@ if (!$is_search):
             </select>
         <?php
         endif;
-
         switch (1) {
             case $current_category->slug == $parent->slug . '-store':
                 $body_class = 'vendor-store';
                 echo '<link rel="stylesheet" href="/wp-content/themes/storefront-child/assets/css/vendor-store.css" media="all">';
                 include_once ABSPATH . 'wp-content/themes/storefront-child/vendor-store.php';
+                echo '<script src="' . get_stylesheet_directory_uri() . '/assets/js/vendor-store.js"></script>';
                 break;
             case $current_category->slug == $parent->slug . '-product':
                 $body_class = 'vendor-product';
                 echo '<link rel="stylesheet" href="/wp-content/themes/storefront-child/assets/css/vendor-product.css" media="all">';
                 include_once ABSPATH . 'wp-content/themes/storefront-child/vendor-product.php';
+                echo '<script src="' . get_stylesheet_directory_uri() . '/assets/js/vendor-product.js"></script>';
                 break;
             case $current_category->slug == $parent->slug . '-time-limit':
                 $body_class = 'vendor-time-limit';
                 echo '<link rel="stylesheet" href="/wp-content/themes/storefront-child/assets/css/vendor-product.css" media="all">';
                 include_once ABSPATH . 'wp-content/themes/storefront-child/vendor-product.php';
+                echo '<script src="' . get_stylesheet_directory_uri() . '/assets/js/vendor-product.js"></script>';
                 break;
             case $current_category->slug == $parent->slug . '-new':
                 $body_class = 'vendor-new';
                 echo '<link rel="stylesheet" href="/wp-content/themes/storefront-child/assets/css/vendor-product.css" media="all">';
                 include_once ABSPATH . 'wp-content/themes/storefront-child/vendor-product.php';
+                echo '<script src="' . get_stylesheet_directory_uri() . '/assets/js/vendor-product.js"></script>';
                 break;
             case strpos($current_category->slug, $parent->slug . '-category') !== false :
                 $body_class = 'vendor-category';
@@ -184,6 +187,7 @@ if (!$is_search):
                 $body_class = 'other-vendor';
                 echo '<link rel="stylesheet" href="/wp-content/themes/storefront-child/assets/css/other-vendor.css" media="all">';
                 include_once ABSPATH . 'wp-content/themes/storefront-child/vendor-product.php';
+                echo '<script src="' . get_stylesheet_directory_uri() . '/assets/js/other-vendor.js"></script>';
         }
     } else if (
         ( sizeof(explode('/', $_SERVER['REQUEST_URI'])) <= 4 ) ||
@@ -193,6 +197,7 @@ if (!$is_search):
         $body_class = 'other-archive-product';
         echo '<link rel="stylesheet" href="/wp-content/themes/storefront-child/assets/css/other-archive-product.css" media="all">';
         include_once ABSPATH . 'wp-content/themes/storefront-child/other-archive-product.php';
+        echo '<script src="' . get_stylesheet_directory_uri() . '/assets/js/other-archive.js"></script>';
     } else {
         ?>
         <script>
@@ -211,7 +216,6 @@ if (!$is_search):
             })
         </script>
     <?php
-
     /**
      * Hook: woocommerce_after_main_content.
      *
@@ -229,6 +233,8 @@ if (!$is_search):
     get_footer( 'shop' );
 
 elseif ($is_search):
+    echo '<link rel="stylesheet" href="/wp-content/themes/storefront-child/assets/css/original-wc-archive.css" media="all">';
+    echo '<script src="' . get_stylesheet_directory_uri() . '/assets/js/original-wc-archive.js"></script>';
     include_once ABSPATH . 'wp-content/themes/storefront-child/original-archive-product.php';
 else:
     if ( woocommerce_product_loop() ) {

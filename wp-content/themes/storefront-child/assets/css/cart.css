@@ -236,7 +236,7 @@ dd {
     }
 }
 
-@media screen and (min-width: 1px) and (max-width: 480px) {
+@media screen and (max-width: 480px) {
     dd {
         width: 70%;
     }
@@ -325,5 +325,28 @@ dd {
     .woocommerce-cart.woocommerce-page table.shop_table_responsive tbody tr.woocommerce-shipping-totals th {
         width: 40%;
         padding-bottom: 192px;
+    }
+
+    ul#shipping_method {
+        text-align: left;
+        margin-left: 30%;
+    }
+}
+
+@media screen and (max-width: 415px) {
+    ul#shipping_method {
+        margin-left: 11%;
+    }
+}
+
+@media screen and (max-width: 391px) {
+    ul#shipping_method {
+        margin-left: 11%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    ul#shipping_method {
+        margin-left: -11%;
     }
 }

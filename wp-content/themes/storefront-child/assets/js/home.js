@@ -84,5 +84,15 @@ jQuery(function ($) {
                 rows: 1
             })
         }
+
+        $('.home-page-hot-channel-pd, .home-page-hot-product-pd, ' +
+            '.home-page-doweing-category-pd, .home-page-recommend-product-pd').find('a').addClass('home-all-pd-slider-single-parent');
+
+        $('.home-page-hot-channel-pd, .home-page-hot-product-pd, ' +
+            '.home-page-doweing-category-pd, .home-page-recommend-product-pd').find('p').addClass('home-all-pd-slider-text');
+
+        $('.home-page-doweing-category-pd').find('p').addClass('home-category-pd-slider-text');
+
+
     }
 })

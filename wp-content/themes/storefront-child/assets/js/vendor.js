@@ -1,6 +1,5 @@
 jQuery(function ($) {
     $(document).ready(function(){
-
         $(window).resize(function() {
             autoSlick();
         });
@@ -51,4 +50,7 @@ jQuery(function ($) {
         window.location = location.origin + location.pathname + '?orderby=' + $(this).attr('attr-orderby');
     })
 
+    if ($('body.search-results').length) {
+        $('body').addClass('archive');
+    }
 })

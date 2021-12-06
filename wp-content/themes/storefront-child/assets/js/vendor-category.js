@@ -53,4 +53,31 @@ jQuery(function ($) {
     $('body').on('click', '.sidebar-item', function (){
         location.href = $(this).find('.item-link').attr('href');
     });
+
+    $(document).ready(function() {
+        $.each($('body.archive.vendor-category li.product'), function (key ,value) {
+            if ($(value).find('a span.price span.woocommerce-Price-amount.amount').length == 1) {
+                if ($(window ).width() <= 320) {
+                    $(value).find('.price').css('cssText', 'margin-top: 19%;');
+                    $(value).find('a.button.add_to_cart_button').css('cssText', 'margin-top: -38% !important;');
+                } else if ($(window ).width() <= 390) {
+                    $(value).find('.price').css('cssText', 'margin-top: 15%;');
+                    $(value).find('a.button.add_to_cart_button').css('cssText', 'margin-top: -31% !important;');
+                } else if ($(window ).width() <= 480) {
+                    $(value).find('.price').css('cssText', 'margin-top: 11%;');
+                    $(value).find('a.button.add_to_cart_button').css('cssText', 'margin-top: -27% !important;');
+                } else if ($(window ).width() <= 768) {
+                    $(value).find('.price').css('cssText', 'margin-top: 26%;');
+                    $(value).find('a.button.add_to_cart_button').css('cssText', 'margin-top: -22% !important;');
+                } else if ($(window ).width() <= 1024) {
+                    $(value).find('.price').css('cssText', 'margin-top: 27%;');
+                    $(value).find('a.button.add_to_cart_button').css('cssText', 'margin-top: -39% !important;');
+                } else if ( $(window).width() > 1024) {
+                    $(value).find('.price').css('cssText', 'margin-top: 23%;');
+                    $(value).find('a.button.add_to_cart_button').css('cssText', 'margin-top: -33% !important;');
+                }
+            }
+        })
+    })
+
 })

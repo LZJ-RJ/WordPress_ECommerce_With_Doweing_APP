@@ -1,6 +1,5 @@
 <?php
 echo '<h3>' . sprintf ( __( 'Search results for &ldquo;%s&rdquo;', 'woocommerce' ),  get_search_query()) . '</h3>';
-echo '<link rel="stylesheet" href="/wp-content/themes/storefront-child/assets/css/original-wc-archive.css" media="all">';
 ?>
     <script>
         jQuery(function($){
@@ -20,22 +19,23 @@ if ( woocommerce_product_loop() ) {
      * @hooked woocommerce_catalog_ordering - 30
      */
 
-    if ( wc_get_loop_prop( 'total' ) ) {
-        while ( have_posts() ) {
-            if ( isset($is_vendor) && isset($parent) ) {
-                if ( $is_vendor && product_is_in_category($parent->term_id, $post->ID)) {
-                    $search_product_list[] += $post->ID;
-                } else {
-                    search_not_found();
-                }
-            } else {
+    while ( have_posts() ) {
+
+
+        if ( isset($is_vendor) && isset($parent) ) {
+            if ( $is_vendor && product_is_in_category($parent->term_id, $post->ID)) {
                 $search_product_list[] += $post->ID;
+            } else {
+                search_not_found();
             }
-            the_post();
-            /**
-             * Hook: woocommerce_shop_loop.
-             */
+        } else {
+            $search_product_list[] += $post->ID;
         }
+
+        the_post();
+        /**
+         * Hook: woocommerce_shop_loop.
+         */
     }
 
     if ( empty($search_product_list) ) {

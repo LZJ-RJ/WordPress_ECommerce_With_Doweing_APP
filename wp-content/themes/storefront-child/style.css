@@ -294,6 +294,9 @@ input::-webkit-inner-spin-button {
 #masthead div.col-full > div.site-branding {
     width: fit-content!important;
     margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
 }
 #masthead div.col-full > div.site-search {
     float: left;
@@ -308,6 +311,7 @@ input::-webkit-inner-spin-button {
 #masthead > div.col-full {
     padding-right: 0;
     width: 50%;
+    margin-left: 11%;
 }
 #masthead #site-header-cart {
     float: left;
@@ -502,6 +506,7 @@ footer#colophon > div > div.storefront-handheld-footer-bar > ul > li.my-account 
 
     #masthead div.col-full > div.site-branding {
         margin-right: 5px;
+        float: left;
     }
 
     #masthead div.col-full > div.site-search {
@@ -639,7 +644,7 @@ footer#colophon > div > div.storefront-handheld-footer-bar > ul > li.my-account 
         background-image: url(/wp-content/uploads/2021/09/icon-doweing-logo3.png);
         width: 100px;
         height: 100px;
-        margin-left: 150%;
+        background-position-x: center;
     }
 
 }
@@ -735,7 +740,12 @@ footer#colophon > div > div.storefront-handheld-footer-bar > ul > li.my-account 
 
     #masthead div.col-full > div.site-branding {
         margin-bottom: -80px;
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
     }
+
+
 }
 @media screen and (min-width: 1px) and (max-width: 321px) {
     #masthead div.site-title {

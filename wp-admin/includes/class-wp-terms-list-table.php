@@ -227,21 +227,21 @@ class WP_Terms_List_Table extends WP_List_Table {
             )
 		);
 
-		$current_user = wp_get_current_user();
-		if (is_admin() &&
-            (
-                    !in_array( 'administrator', (array) $current_user->roles ) &&
-                    !in_array( 'shop_manager', (array) $current_user->roles )
-            )
-        ) {
-		    $args['meta_query'] = array(
-                array(
-                    'key' => '_author_id',
-                    'value' => $current_user->ID,
-                    'compare' => '=',
-                )
-            );
-        }
+//		$current_user = wp_get_current_user();
+//		if (is_admin() &&
+//            (
+//                    !in_array( 'administrator', (array) $current_user->roles ) &&
+//                    !in_array( 'shop_manager', (array) $current_user->roles )
+//            )
+//        ) {
+//		    $args['meta_query'] = array(
+//                array(
+//                    'key' => '_author_id',
+//                    'value' => $current_user->ID,
+//                    'compare' => '=',
+//                )
+//            );
+//        }
 		$page = $args['page'];
 
 		// Set variable because $args['number'] can be subsequently overridden.

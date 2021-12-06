@@ -1,11 +1,11 @@
 jQuery(function($){
-    window.onload = function () {
+
+    $(document).ready(function() {
         if ($('.single-product').length && window.location.search == '') {
             $('.reset_variations').click();
             $('.quantity input[name="quantity"]').val(1);
         }
 
-        $('.single-product .tabs.wc-tabs').remove();
         $('.single-product .woocommerce-Tabs-panel.panel.entry-content.wc-tab').css('display', 'block');
         $('.single-product .woocommerce-Tabs-panel.panel.entry-content.wc-tab').css('width', '100%');
 
@@ -28,5 +28,14 @@ jQuery(function($){
             }
         })
 
-    }
+
+        $.each($('.single-product .tab-pd-content'), function (key ,value){
+            if ($(value).height() > 120) {
+                $(value).css('height', '120px');
+                $(value).css('overflow', 'hidden');
+                $(value).parent('.tab-pd-wrapper').append('<br><button class="tab-read-more more">查看更多</button><br>');
+            }
+        });
+    })
+
 });

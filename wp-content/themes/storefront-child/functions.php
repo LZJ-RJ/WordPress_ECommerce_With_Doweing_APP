@@ -34,15 +34,7 @@ class StorefrontChildTheme
         include_once WC_ABSPATH . 'includes/wc-template-functions.php';
         wp_enqueue_style('admin-css', get_stylesheet_directory_uri() . '/assets/css/admin.css?version=20211127');
     }
-    private function include_frontend_files()
-    {
-        $is_admin_page = is_admin();
-        if (!$is_admin_page) {
-            wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js?version=20211127');
-            wp_enqueue_script('storefront-child-theme-js', get_stylesheet_directory_uri() . '/assets/js/storefront.js?version=20211127');
-            wp_enqueue_style('storefront-child-theme-css', get_stylesheet_directory_uri() . '/assets/css/storefront.css?version=20211127');
-        }
-     }
+    private function include_frontend_files(){}
 
     private function register_hooks()
     {
@@ -58,6 +50,7 @@ class StorefrontChildTheme
         add_filter('wp_head', [$this, 'redirect_to_somewhere']);
 
         add_action( 'init', [$this, 'my_custom_endpoints'] );
+        add_action( 'admin_head', [$this, 'add_admin_script'], 999 );
         add_filter( 'woocommerce_account_menu_items', [$this, 'my_custom_my_account_menu_items']);
         add_action('woocommerce_account_my-wishlist_endpoint', [$this, 'my_custom_endpoint_content']);
         add_filter( 'query_vars', [$this, 'my_custom_query_vars'], 0 );
@@ -67,13 +60,82 @@ class StorefrontChildTheme
         add_filter( 'woocommerce_add_to_cart_validation', [$this, 'handle_is_verified'], 99, 3); //加入購物車前的驗證
         add_filter( 'woocommerce_my_account_my_orders_query', [$this, 'add_url_query_status'], 999, 1);
 
-        add_action('create_product_cat', [$this, 'add_author'], 10, 1);
-        add_filter('pre_get_posts', [$this, 'posts_for_current_author']);
-   }
+        add_action( 'create_product_cat', [$this, 'add_author'], 10, 1);
+        add_filter( 'pre_get_posts', [$this, 'posts_for_current_author']);
+//        add_filter( 'posts_search', [$this, 'woocommerce_search_product_cat_extended'], 999, 2 );
 
-   public function add_author($taxonomy_id) {
+        add_filter( 'woocommerce_shortcode_products_query', [$this, 'check_product_variation'] );
+        add_filter( 'woocommerce_shop_manager_editable_roles', [$this, 'modify_shop_manager_roles'] );
+    }
+
+    public function modify_shop_manager_roles($roles) {
+        array_push($roles, 'editor');
+        return $roles;
+    }
+
+    public function add_admin_script(){
+        $user = wp_get_current_user();
+        foreach((array) $user->roles as $role) {
+            ?>
+            <script>
+                jQuery(function($){
+                    $('body').addClass('<?=$role?>');
+                })
+            </script>
+            <?php
+        }
+    }
+
+    public function check_product_variation($args) {
+        $new_args = $args;
+        if (isset($args['post__in'])) {
+            foreach ($args['post__in'] as $key => $post_id) {
+                if ( $product = wc_get_product($post_id)) {
+                    if ($product->is_type('variable') && !$product->get_available_variations()) {
+                        unset($new_args['post__in'][$key]);
+                    }
+                }
+            }
+        }
+        return $new_args;
+    }
+
+    public function add_author($taxonomy_id) {
         add_term_meta($taxonomy_id, '_author_id', wp_get_current_user()->ID);
-   }
+    }
+
+//    public function woocommerce_search_product_cat_extended($search, $query) {
+//        global $wpdb, $wp;
+//
+//        $qvars = $wp->query_vars;
+//
+////        if ( is_admin() || empty($search) ||  ! ( isset($qvars['s'])
+////                && isset($qvars['post_type']) && ! empty($qvars['s'])
+////                && $qvars['post_type'] === 'product' ) ) {
+////            return $search;
+////        }
+//
+//        // Here set your custom taxonomy
+//        $taxonomy = 'product_cat'; // WooCommerce product cat
+//
+//        // Get the product Ids
+//        $ids = get_posts( array(
+//            'posts_per_page'  => -1,
+//            'post_type'       => 'product',
+//            'post_status'     => 'publish',
+//            'fields'          => 'ids',
+//            'tax_query'       => array( array(
+//                'taxonomy' => $taxonomy,
+//                'field'    => 'name',
+//                'terms'    => esc_attr($qvars['s']),
+//            )),
+//        ));
+//
+//        if ( count( $ids ) > 0 ) {
+//            $search = str_replace( 'AND (((', "AND ((({$wpdb->posts}.ID IN (" . implode( ',', $ids ) . ")) OR (", $search);
+//        }
+//        return $search;
+//    }
 
     public function posts_for_current_author($query) {
         $user = wp_get_current_user();
@@ -322,8 +384,14 @@ class StorefrontChildTheme
 
     public function include_files_in_footer()
     {
+        $is_admin_page = is_admin();
+        if (!$is_admin_page) {
+            wp_enqueue_script('storefront-child-theme-js', get_stylesheet_directory_uri() . '/assets/js/storefront.js?version=20211205');
+            wp_enqueue_style('storefront-child-theme-css', get_stylesheet_directory_uri() . '/assets/css/storefront.css?version=20211127');
+        }
+
         if (is_front_page()) {
-            wp_enqueue_style('home-css', get_stylesheet_directory_uri() . '/assets/css/home.css?version=202111271545');
+            wp_enqueue_style('home-css', get_stylesheet_directory_uri() . '/assets/css/home.css?version=202112050940');
             wp_enqueue_script('home-js', get_stylesheet_directory_uri() . '/assets/js/home.js?version=20211127');
         }
 

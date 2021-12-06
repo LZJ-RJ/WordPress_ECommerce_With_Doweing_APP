@@ -12,16 +12,23 @@ body.archive.vendor-store div.vendor-page-store-product-pd.slick-slider > div > 
     font-size: 16px;
     text-align: center;
     overflow:hidden;
-    white-space: nowrap;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     white-space: normal;
+    height: 35pt;
+
 }
 
 body.archive a.button.add_to_cart_button {
-    margin-top: 8px !important;
+    margin-top: 11px !important;
+}
+
+@media screen and (max-width: 1024px) {
+    body.archive a.button.add_to_cart_button {
+        margin-top: 9px !important;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -46,7 +53,16 @@ body.archive a.button.add_to_cart_button {
 
     body.archive span.price {
         float: left !important;
-        width: 75% !important;
+        width: 85% !important;
+    }
+    body.archive a.button.add_to_cart_button {
+        margin-top: -8px !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body.archive a.button.add_to_cart_button {
+        margin-top: -33px !important;
     }
 }
 
@@ -56,9 +72,9 @@ body.archive a.button.add_to_cart_button {
     }
 
     body.archive a.button.add_to_cart_button {
-        margin-top: 30px !important;
+        margin-top: 0px !important;
     }
     body.archive span.price {
-        width: 70% !important;
+        width: 85% !important;
     }
 }

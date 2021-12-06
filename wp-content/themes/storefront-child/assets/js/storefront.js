@@ -92,14 +92,6 @@ jQuery(function($){
         $(this).parents('.quantity').find('input[type="number"]').change();
     });
 
-    $.each($('.single-product .tab-pd-content'), function (key ,value){
-       if ($(value).height() > 120) {
-           $(value).css('height', '120px');
-           $(value).css('overflow', 'hidden');
-           $(value).parent('.tab-pd-wrapper').append('<br><button class="tab-read-more more">查看更多</button><br>');
-       }
-    });
-
     $('body').on('click', '.tab-read-more', function () {
         if($(this).hasClass('more')) {
             $(this).parent('.tab-pd-wrapper').css('height', '100%');
@@ -117,64 +109,12 @@ jQuery(function($){
     });
 
 
-    $('.beta.site-title [rel="home"]').html("");
     $(document).on('click', '#masthead div.site-title', function () {
         location.href = $(this).find("a").attr("href");
     })
 
     if ($('body.logged-in').length) {
         $('#menu-item-52 > a').text("");
-    }
-
-    window.onload = function () {
-        $.each($('body.archive.other-archive-product li.product'), function (key ,value) {
-            if ($(value).find('a span.price span.woocommerce-Price-amount.amount').length == 1) {
-                $(value).find('a span.price').css('line-height', 3.5);
-
-                if ( $(window).width() > 1024) {
-                    $(value).find('a.button.add_to_cart_button').css('cssText', 'margin-top: -47% !important;');
-                } else if ($(window ).width() > 768 && $(window).width() <= 1024) {
-                    $(value).find('a.button.add_to_cart_button').css('cssText', 'margin-top: -55% !important;');
-                } else if ($(window ).width() <= 480) {
-                    $(value).find('a.button.add_to_cart_button').css('cssText', 'margin-top: 10px !important;');
-                }
-            } else {
-                $(value).find('a span.price').css('line-height', 1.3);
-            }
-        })
-
-        $.each($('body.archive div.store-product-single-pd-cat-info'), function (key ,value) {
-            if ($(value).find('span.price span.woocommerce-Price-amount.amount').length == 1) {
-                $(value).find('span.price').css('line-height', 3.5);
-
-                if ( $(window).width() > 1024) {
-                    $(value).find('a.button.add_to_cart_button').css('cssText', 'margin-top: 4% !important;');
-                } else if ($(window ).width() > 768 && $(window).width() <= 1024) {
-                    $(value).find('a.button.add_to_cart_button').css('cssText', 'margin-top: 5% !important;');
-                } else if ($(window ).width() <= 320) {
-                    $(value).find('a.button.add_to_cart_button').css('cssText', 'margin-top: 6px !important;');
-                }
-            } else {
-                $(value).find('span.price').css('line-height', 1.3);
-            }
-        })
-
-        $.each($('body.archive.other-vendor li.product'), function (key ,value) {
-            if ($(value).find('a span.price span.woocommerce-Price-amount.amount').length == 1) {
-                $(value).find('a span.price').css('line-height', 3.5);
-
-                if ( $(window).width() > 1024) {
-                    $(value).find('a.button.add_to_cart_button').css('cssText', 'margin-top: -47% !important;');
-                } else if ($(window ).width() > 768 && $(window).width() <= 1024) {
-                    $(value).find('a.button.add_to_cart_button').css('cssText', 'margin-top: -55% !important;');
-                } else if ($(window ).width() <= 480) {
-                    $(value).find('a.button.add_to_cart_button').css('cssText', 'margin-top: 10px !important;');
-                }
-            } else {
-                $(value).find('a span.price').css('line-height', 1.3);
-            }
-        })
-
     }
 
     $('body form.woocommerce-product-search').attr('action', location.origin + location.pathname);

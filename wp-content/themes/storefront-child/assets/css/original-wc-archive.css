@@ -5,22 +5,19 @@ body.archive #main > h3 {
 
 body.archive a.button.add_to_cart_button ,
 body.archive .button.product_type_external {
-    width: 100%;
     padding: 5%;
 }
 
 body.archive span.price {
-    width: 60%;
+    width: 100%;
     display: inline-block;
 }
 body.archive a.button.add_to_cart_button {
     display: inline-block;
-    width: 25%;
     border-radius: 50%;
     background-color: #2196F3;
     color: white;
-    margin-top: -34%;
-    height: 2.6em;
+    margin-top: -37%;
     float: left;
     margin-left: 58%;
     background-image: url(/wp-content/uploads/2021/11/ic_appbar_shop_cart_dk_normal@2x.png);
@@ -30,6 +27,7 @@ body.archive a.button.add_to_cart_button {
 }
 body.archive li.sale a.button.add_to_cart_button {
     margin-top: -43%;
+    margin-left: 71%;
 }
 
 body.archive a.button.add_to_cart_button:after {
@@ -71,22 +69,27 @@ ul.products li.product {
 body.archive p.woocommerce-info {
     display: block !important;
 }
+
+@media screen and (max-width: 1024px) {
+    body.archive a.button.add_to_cart_button {
+        margin-top: -40%;
+    }
+}
 @media screen and (max-width: 768px) {
     body.archive a.button.add_to_cart_button {
-        width: 30%;
         float: right;
-        height: 30px;
-        margin-top: -45%;
-        margin-right: -10%;
+        margin-right: -12%;
     }
 
     body.archive li.sale a.button.add_to_cart_button {
-        margin-top: -58%;
+        margin-right: -23%;
+        float: right;
     }
 
     body.archive span.price {
-        width: 84%;
+        width: 90%;
     }
+
 }
 
 @media screen and (max-width: 480px) {
@@ -110,9 +113,7 @@ body.archive p.woocommerce-info {
     }
 
     body.archive a.button.add_to_cart_button {
-        width: 20%;
-        height: 40px;
-        margin-top: -23%;
+        margin-top: -23% !important;
         margin-right: 17%;
     }
 
@@ -122,7 +123,7 @@ body.archive p.woocommerce-info {
     }
 
     body.archive li.sale a.button.add_to_cart_button {
-        margin-top: -31%;
+        margin-top: -26% !important;
         margin-right: 15%;
     }
 }
@@ -133,13 +134,12 @@ body.archive p.woocommerce-info {
     }
 
     body.archive a.button.add_to_cart_button {
-        width: 20%;
-        height: 25px;
         margin-right: 13%;
-        margin-top: -34%;
+        margin-top: -41% !important;
     }
 
     body.archive li.sale a.button.add_to_cart_button {
-        margin-top: -39%;
+        margin-top: -44% !important;
+        margin-right: 4%;
     }
 }

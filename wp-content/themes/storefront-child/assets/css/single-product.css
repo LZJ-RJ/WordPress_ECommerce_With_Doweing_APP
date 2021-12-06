@@ -1,5 +1,12 @@
-body.single-product div.summary.entry-summary > form > div.single_variation_wrap {
-    float: left;
+#masthead div.site-title {
+    margin-left: 1rem;
+}
+
+.storefront-sticky-add-to-cart.storefront-sticky-add-to-cart--slideInDown {
+    height: 100px;
+}
+.storefront-sticky-add-to-cart__content {
+    height: 75px;
 }
 
 body.single-product #carusel_poduct_related a.woocommerce-LoopProduct-link.woocommerce-loop-product__link > span.onsale {
@@ -22,7 +29,7 @@ body.single-product a.button.product_type_external {
     color: white;
     margin-top: 5% !important;
     float: left;
-    margin-right: 1%;
+    margin-right: -37%;
     background-image: url(/wp-content/uploads/2021/11/ic_appbar_shop_cart_dk_normal@2x.png);
     background-repeat: no-repeat;
     background-position: center;
@@ -56,7 +63,7 @@ body.single-product span.price bdi {
 }
 body.single-product #main span.price {
     float: left;
-    width: 80px;
+    width: 90px;
     margin-left: 10%;
     font-size: 16px;
 }
@@ -122,6 +129,7 @@ h2, h4,
 .single-product .up-sells.upsells.products ul li a.button {
     display: none;
 }
+
 body.single-product section > div > div > div > span.storefront-sticky-add-to-cart__content-title > strong,
 body.single-product ul.products li.product .woocommerce-loop-product__title {
     overflow:hidden;
@@ -132,6 +140,9 @@ body.single-product ul.products li.product .woocommerce-loop-product__title {
     -webkit-box-orient: vertical;
     white-space: normal;
 }
+body.single-product ul.products li.product .woocommerce-loop-product__title {
+    height: 30pt;
+}
 body.single-product section > div > div > div > span.storefront-sticky-add-to-cart__content-title > strong {
     -webkit-line-clamp: 1;
 }
@@ -139,13 +150,23 @@ ul.products li.product img {
     width: 120px;
     height: 118px;
 }
+
 @media screen and (max-width: 1024px) {
     .single-product div.summary.entry-summary {
         width: 45%!important;
     }
 }
 
+@media screen and (min-width: 768px) {
+    .storefront-sticky-add-to-cart__content {
+        justify-content: initial;
+    }
+}
 @media screen and (max-width: 768px) {
+    .storefront-sticky-add-to-cart__content {
+        height: 85px;
+    }
+
     body.single-product a.button.add_to_cart_button {
         float: left;
     }
@@ -167,6 +188,7 @@ ul.products li.product img {
 
     body.single-product .storefront-sticky-add-to-cart__content-button {
         width: 28%;
+        text-align: center;
     }
     body.single-product a.button.add_to_cart_button,
     body.single-product a.button.product_type_external {
@@ -231,16 +253,12 @@ ul.products li.product img {
         font-size: 13px;
     }
 
-    #masthead div.site-title {
-        margin-left: 100%;
-    }
-
     body.single-product ul.products li.product .woocommerce-loop-product__title {
         font-size: 1.1rem;
     }
     body.single-product #main span.price {
         font-size: 1em;
-        width: 65%;
+        width: 70%;
     }
 
     body.single-product .wrap2.plus {
@@ -265,21 +283,19 @@ ul.products li.product img {
     .single-product div.summary.entry-summary {
         width: 100%!important;
     }
+
+    .woocommerce-variation.single_variation {
+        float: left;
+    }
+
+    body.single-product ul.products li.product .woocommerce-loop-product__title {
+        height: 39pt;
+    }
 }
 
 @media screen and (max-width: 320px) {
-    body.single-product a.button.add_to_cart_button {
-        width: 30%;
-    }
-
     body.single-product a.button.product_type_external {
         margin-top: 4% !important;
-        margin-right: 35% !important;
-    }
-
-    body.single-product li.sale a.button.product_type_external,
-    body.single-product a.button.product_type_external {
-        width: 35% !important;
     }
 
     body.single-product span.price {
@@ -291,23 +307,9 @@ ul.products li.product img {
         margin-left: 2%;
     }
 
-    body.single-product a.button.add_to_cart_button {
-        height: 32px;
-    }
-    body.single-product a.button.add_to_cart_button,
-    body.single-product a.button.product_type_external {
-        width: 26% !important;
-    }
-    body.single-product a.button.product_type_external {
-        height: 2em;
-    }
-
     body.single-product li.sale a.button.product_type_external,
     body.single-product a.button.product_type_external {
         line-height: 0.5;
     }
 
-    #masthead div.site-title {
-        margin-left: 60%;
-    }
 }
